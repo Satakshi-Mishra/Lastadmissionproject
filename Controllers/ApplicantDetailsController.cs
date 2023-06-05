@@ -17,9 +17,13 @@ namespace Lastadmissionproject.Controllers
         // GET: ApplicantDetails
         public ActionResult Index()
         {
-            return View(db.ApplicantDetails.ToList());
+           return View(db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
         }
-
+        
+        public ActionResult MeritList()
+        {
+            return View(db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
+        }
         // GET: ApplicantDetails/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,7 +41,14 @@ namespace Lastadmissionproject.Controllers
 
         // GET: ApplicantDetails/Create
         public ActionResult Create()
-        {
+        { 
+
+
+        var courses = db.Courses.ToList();
+
+        //Set the courses as SelectList in ViewBag 
+        ViewBag.Courses = courses;
+            
             return View();
         }
 
@@ -46,7 +57,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks")] ApplicantDetail applicantDetail)
+        public ActionResult Create([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks,CourseId")] ApplicantDetail applicantDetail)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +89,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks")] ApplicantDetail applicantDetail)
+        public ActionResult Edit([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks,CourseId")] ApplicantDetail applicantDetail)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +125,16 @@ namespace Lastadmissionproject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        /*public ActionResult CourseSelection()
+        {
+            //Retrieve the list of courses from the database
+            var courses= db.Courses.ToList();
+
+            //Set the courses as SelectList in ViewBag 
+            ViewBag.Courses = courses;
+            return View();
+        }*/
 
         protected override void Dispose(bool disposing)
         {

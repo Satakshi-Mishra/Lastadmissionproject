@@ -131,6 +131,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Controllers\MeritListsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +146,26 @@
     <Compile Include="Migrations\202305301236462_initialsetup3.cs" />
     <Compile Include="Migrations\202305301236462_initialsetup3.designer.cs">
       <DependentUpon>202305301236462_initialsetup3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306050824529_cutoffs.cs" />
+    <Compile Include="Migrations\202306050824529_cutoffs.designer.cs">
+      <DependentUpon>202306050824529_cutoffs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306050958544_coursestable.cs" />
+    <Compile Include="Migrations\202306050958544_coursestable.designer.cs">
+      <DependentUpon>202306050958544_coursestable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306051146451_notnull.cs" />
+    <Compile Include="Migrations\202306051146451_notnull.designer.cs">
+      <DependentUpon>202306051146451_notnull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306051240103_notnull2.cs" />
+    <Compile Include="Migrations\202306051240103_notnull2.designer.cs">
+      <DependentUpon>202306051240103_notnull2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306051255326_notnull3.cs" />
+    <Compile Include="Migrations\202306051255326_notnull3.designer.cs">
+      <DependentUpon>202306051255326_notnull3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
@@ -234,6 +255,12 @@
     <Content Include="Views\Logins\Details.cshtml" />
     <Content Include="Views\Logins\Edit.cshtml" />
     <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\MeritLists\Create.cshtml" />
+    <Content Include="Views\MeritLists\Delete.cshtml" />
+    <Content Include="Views\MeritLists\Details.cshtml" />
+    <Content Include="Views\MeritLists\Edit.cshtml" />
+    <Content Include="Views\MeritLists\Index.cshtml" />
+    <Content Include="Views\ApplicantDetails\MeritList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +301,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305301236462_initialsetup3.resx">
       <DependentUpon>202305301236462_initialsetup3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306050824529_cutoffs.resx">
+      <DependentUpon>202306050824529_cutoffs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306050958544_coursestable.resx">
+      <DependentUpon>202306050958544_coursestable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306051146451_notnull.resx">
+      <DependentUpon>202306051146451_notnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306051240103_notnull2.resx">
+      <DependentUpon>202306051240103_notnull2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306051255326_notnull3.resx">
+      <DependentUpon>202306051255326_notnull3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

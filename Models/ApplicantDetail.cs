@@ -54,12 +54,13 @@ namespace Lastadmissionproject.Models
 
 
         public int HigherSecondaryAggregateMarks { get; set; }
+        
+
+
+        [Display(Name = "Preffered Course")]
         [Required]
-
-
-
         [ForeignKey("Courses")]  //many to one relation reference navigation
-        public int PreferenceCourseId { get; }
-        public virtual Courses Courses { get; }
+        public int CourseId { get; set; }
+        public virtual Courses Courses { get; set; }
     }
 }

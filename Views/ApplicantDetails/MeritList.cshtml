@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Lastadmissionproject.Models.ApplicantDetail>
+
+@{
+    ViewBag.Title = "MeritList";
+}
+
+<h2>MeritList</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
+            </td>
+
+
+            
+        </tr>
+    }
+
+</table>

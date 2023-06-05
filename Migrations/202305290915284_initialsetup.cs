@@ -34,11 +34,11 @@
                         Mobile = c.String(nullable: false),
                         Age = c.Int(nullable: false),
                         HigherSecondaryAggregateMarks = c.Int(nullable: false),
-                        Courses_CourseId = c.Int(),
+                        Course_CourseId = c.Int(),
                     })
                 .PrimaryKey(t => t.CandidateId)
-                .ForeignKey("dbo.Courses", t => t.Courses_CourseId)
-                .Index(t => t.Courses_CourseId);
+                .ForeignKey("dbo.Courses", t => t.Course_CourseId)
+                .Index(t => t.Course_CourseId);
             
             CreateTable(
                 "dbo.Courses",

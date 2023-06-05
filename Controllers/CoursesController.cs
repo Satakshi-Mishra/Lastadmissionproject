@@ -46,7 +46,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseId,CourseName,SeatAvailable,Description")] Courses courses)
+        public ActionResult Create([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff")] Courses courses)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseId,CourseName,SeatAvailable,Description")] Courses courses)
+        public ActionResult Edit([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff")] Courses courses)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +114,8 @@ namespace Lastadmissionproject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {
