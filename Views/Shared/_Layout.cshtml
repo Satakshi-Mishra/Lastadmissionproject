@@ -22,17 +22,39 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("About us", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+
+
                     <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Admissions", "Index", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Manage Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
                 </ul>
+
+
+                <ul class="navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("LogOut", "SignOut", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                <li>@Html.ActionLink("Register", "Create", "ApplicantDetails", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+
+                <li>@Html.ActionLink("Log in", "SignIn", "Logins1", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+
             </div>
-            <ul class="navbar-nav navbar-right">
-                <!--<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>-->
-                <!--<li>@Html.ActionLink("Log in", "Index", "Logins", new { area = "" }, new { @class = "nav-link" })</li>-->
-            </ul>
         </div>
+
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -47,7 +69,14 @@
 
 
 
-   
+
 
 </body>
+
 </html>
+
+
+
+
+
+                

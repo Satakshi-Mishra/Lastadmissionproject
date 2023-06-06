@@ -4,13 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Register</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Courses.CourseName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
@@ -34,17 +37,21 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
-
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseId)
-
+            @Html.DisplayNameFor(model => model.Role)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.AllotmentStatus)
+        </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Courses.CourseName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
@@ -70,15 +77,15 @@
             @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseId)
+            @Html.DisplayFor(modelItem => item.Role)
         </td>
-
-
-
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+            @Html.DisplayFor(modelItem => item.AllotmentStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CandidateId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CandidateId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CandidateId })
         </td>
     </tr>
 }

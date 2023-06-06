@@ -50,10 +50,11 @@ namespace Lastadmissionproject.Models
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Marks field is mandatory")]
-        [RegularExpression(@"^(?:100|[1,9]\d|\d)$", ErrorMessage = "Invalid Marks")]
-
+        [Range(0, 100, ErrorMessage = "Invalid Marks ")]
 
         public int HigherSecondaryAggregateMarks { get; set; }
+
+        public string Role { get; set; }
         
 
 
@@ -62,5 +63,7 @@ namespace Lastadmissionproject.Models
         [ForeignKey("Courses")]  //many to one relation reference navigation
         public int CourseId { get; set; }
         public virtual Courses Courses { get; set; }
+
+        public string AllotmentStatus { get; set; }
     }
 }

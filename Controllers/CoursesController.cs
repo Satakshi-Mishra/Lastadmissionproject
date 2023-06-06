@@ -10,11 +10,14 @@ using Lastadmissionproject.Models;
 
 namespace Lastadmissionproject.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class CoursesController : Controller
     {
         private AdmissionDbContext db = new AdmissionDbContext();
 
         // GET: Courses
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Courses.ToList());

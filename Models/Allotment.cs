@@ -13,9 +13,9 @@ namespace Lastadmissionproject.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AllocationId { get; set; }
 
-        [ForeignKey("ApplicantDetail")]
+       // [ForeignKey("ApplicantDetail")]
         public int CandidateId { get; set; }
-        public virtual ApplicantDetail ApplicantDetail { get; set; }
+       public virtual ApplicantDetail ApplicantDetail { get; set; }
 
 
         [ForeignKey("Courses")]
