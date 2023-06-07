@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202306060919276_role.designer.cs">
       <DependentUpon>202306060919276_role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306070408002_june7.cs" />
+    <Compile Include="Migrations\202306070408002_june7.designer.cs">
+      <DependentUpon>202306070408002_june7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
@@ -297,6 +301,8 @@
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Logins1\SignIn.cshtml" />
+    <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Logins\abc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306060919276_role.resx">
       <DependentUpon>202306060919276_role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306070408002_june7.resx">
+      <DependentUpon>202306070408002_june7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

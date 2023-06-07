@@ -59,6 +59,8 @@ namespace Lastadmissionproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ApplicantDetail applicantDetail)
         {
+            applicantDetail.Role = "Applicant";
+
             applicantDetail.AllotmentStatus = "Pending";
             
                 db.ApplicantDetails.Add(applicantDetail);

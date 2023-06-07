@@ -123,5 +123,10 @@ namespace Lastadmissionproject.Controllers
             }
             base.Dispose(disposing);
         }
+
+       public ActionResult abc()
+        {
+            return View();
+        }
     }
 }
