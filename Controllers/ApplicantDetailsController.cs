@@ -22,7 +22,12 @@ namespace Lastadmissionproject.Controllers
         
         public ActionResult MeritList()
         {
+            
+
             return View(db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
+
+            
+
         }
         // GET: ApplicantDetails/Details/5
         public ActionResult Details(int? id)

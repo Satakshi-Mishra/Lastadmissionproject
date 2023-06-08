@@ -6,36 +6,57 @@
 
 <h2>MeritList</h2>
 
-
+@if (User.IsInRole("Admin"))
+{
+    <button class="btn btn-primary" onclick="location.href='@Url.Action("Allot", "Allotments")'">Allot Seats</button>
+}
 <table class="table">
     <tr>
+        <!--<th>
+        @Html.DisplayNameFor(model => model.CandidateId)
+    </th>-->
+
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
 
         </th>
+        <!--<th>
+        @Html.DisplayNameFor(model => model.CourseId)
+
+    </th>-->
+
+
+
+
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <!--<td>
+        @Html.DisplayNameFor(model => model.CandidateId)
+    </td>-->
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
             </td>
+            <!--<td>
+        @Html.DisplayNameFor(model => model.CourseId)
+
+    </td>-->
 
 
-            
+
         </tr>
     }
 
 </table>
 <br />
 
-<button class="btn btn-primary" onclick="location.href='@Url.Action("Allot", "Allotments")'">Allot</button>

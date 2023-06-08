@@ -17,6 +17,12 @@ namespace Lastadmissionproject.Controllers
         // GET: MeritLists
         public ActionResult Index()
         {
+            //int rank = 1;
+            //foreach (var item in db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks))
+            //{
+            //    ApplicantDetail.Rank = rank;
+            //    rank++;
+            //}
             var meritLists = db.MeritLists.Include(m => m.ApplicantDetail);
             return View(meritLists.ToList());
         }
@@ -122,27 +128,27 @@ namespace Lastadmissionproject.Controllers
 
 
         // GET: MeritList/GenerateRankList
-        public ActionResult GenerateRankList()
-        {
-            // Retrieve all applicants from the database
-            var applicants = db.ApplicantDetails.ToList();
+        //public ActionResult GenerateRankList()
+        //{
+        //    // Retrieve all applicants from the database
+        //    var applicants = db.ApplicantDetails.ToList();
 
-            // Generate the rank list based on aggregate marks
-            var rankList = applicants.OrderBy(a => a.HigherSecondaryAggregateMarks)
-            .Select((a, index) => new MeritList
-            {
-                CandidateId = a.CandidateId,
-                HigherSecondaryAggregateMarks = a.HigherSecondaryAggregateMarks,
-                Rank = index + 1
-            })
-            .ToList();
+        //    // Generate the rank list based on aggregate marks
+        //    var rankList = applicants.OrderBy(a => a.HigherSecondaryAggregateMarks)
+        //    .Select((a, index) => new MeritList
+        //    {
+        //        CandidateId = a.CandidateId,
+        //        HigherSecondaryAggregateMarks = a.HigherSecondaryAggregateMarks,
+        //        Rank = index + 1
+        //    })
+        //    .ToList();
 
-            // Save the generated rank list to the database
-            db.MeritLists.AddRange(rankList);
-            db.SaveChanges();
+        //    // Save the generated rank list to the database
+        //    db.MeritLists.AddRange(rankList);
+        //    db.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+        //    return View();
+        //}
 
         protected override void Dispose(bool disposing)
         {

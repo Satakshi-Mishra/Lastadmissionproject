@@ -58,7 +58,7 @@ namespace Lastadmissionproject.Controllers
 
             }
 
-            return Content("alloted");
+            return Content("Seats Alloted");
         }
         
     }

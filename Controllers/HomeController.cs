@@ -26,5 +26,12 @@ namespace Lastadmissionproject.Controllers
 
             return View();
         }
+        public ActionResult Notices()
+        {
+            ViewBag.Message = "Notice Board";
+
+            return View();
+        }
+
     }
 }

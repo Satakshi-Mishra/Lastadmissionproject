@@ -28,11 +28,19 @@
                     <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Admissions", "Index", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Notices", "Notices", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
 
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Manage Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Meritlist and Allot", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+
                     }
+
+
+
+
 
                 </ul>
 
