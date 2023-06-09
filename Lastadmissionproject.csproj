@@ -133,7 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
-    <Compile Include="Controllers\MeritListsController.cs" />
+    <Compile Include="Controllers\MeritListsdemoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +188,10 @@
     <Compile Include="Migrations\202306070408002_june7.cs" />
     <Compile Include="Migrations\202306070408002_june7.designer.cs">
       <DependentUpon>202306070408002_june7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306090525566_rank.cs" />
+    <Compile Include="Migrations\202306090525566_rank.designer.cs">
+      <DependentUpon>202306090525566_rank.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
@@ -305,6 +309,13 @@
     <Content Include="Views\Logins\abc.cshtml" />
     <Content Include="Views\Home\Notices.cshtml" />
     <Content Include="Views\MeritLists\GenerateRankList.cshtml" />
+    <Content Include="Views\Merit\Create.cshtml" />
+    <Content Include="Views\Merit\Delete.cshtml" />
+    <Content Include="Views\Merit\Details.cshtml" />
+    <Content Include="Views\Merit\Edit.cshtml" />
+    <Content Include="Views\Merit\Index.cshtml" />
+    <Content Include="Views\Allotments\Allotments.cshtml" />
+    <Content Include="Views\Courses\AllotmentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306070408002_june7.resx">
       <DependentUpon>202306070408002_june7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306090525566_rank.resx">
+      <DependentUpon>202306090525566_rank.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

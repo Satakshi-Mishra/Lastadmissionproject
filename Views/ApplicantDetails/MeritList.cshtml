@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "MeritList";
+
 }
 
 <h2>MeritList</h2>
@@ -12,9 +13,11 @@
 }
 <table class="table">
     <tr>
-        <!--<th>
-        @Html.DisplayNameFor(model => model.CandidateId)
-    </th>-->
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateId)
+        </th>
+        
+
 
         <th>
             @Html.DisplayNameFor(model => model.FullName)
@@ -24,10 +27,21 @@
             @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
 
         </th>
-        <!--<th>
-        @Html.DisplayNameFor(model => model.CourseId)
+        <th>
 
-    </th>-->
+            @Html.DisplayNameFor(model => model.Courses.CourseName)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Rank)
+        </th>
+
+        <th>
+
+        @Html.DisplayNameFor(model => model.AllotmentStatus)
+    </th>
+
+
 
 
 
@@ -37,9 +51,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <!--<td>
-        @Html.DisplayNameFor(model => model.CandidateId)
-    </td>-->
+            <td>
+                @Html.DisplayFor(modelItem => item.CandidateId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
@@ -47,10 +61,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
             </td>
-            <!--<td>
-        @Html.DisplayNameFor(model => model.CourseId)
+            <td>
 
-    </td>-->
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Rank)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.AllotmentStatus)
+            </td>
+
 
 
 

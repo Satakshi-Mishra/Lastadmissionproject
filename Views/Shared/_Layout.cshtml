@@ -29,6 +29,10 @@
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Admissions", "Index", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Notices", "Notices", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Applicant"))
+                    {
+                        <li>@Html.ActionLink("Meritlist", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
 
 
                     @if (User.IsInRole("Admin"))

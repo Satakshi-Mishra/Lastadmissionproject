@@ -10,7 +10,7 @@ using Lastadmissionproject.Models;
 
 namespace Lastadmissionproject.Controllers
 {
-    public class MeritListsController : Controller
+    public class MeritListsdemoController : Controller
     {
         private AdmissionDbContext db = new AdmissionDbContext();
 

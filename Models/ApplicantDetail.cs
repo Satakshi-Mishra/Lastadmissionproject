@@ -54,8 +54,12 @@ namespace Lastadmissionproject.Models
 
         public int HigherSecondaryAggregateMarks { get; set; }
 
+        //Authentication and authotrization will be done based on roles
         public string Role { get; set; }
-        
+
+        //rank will be given based on the marks
+        public int Rank { get; set; }
+
 
 
         [Display(Name = "Preffered Course")]

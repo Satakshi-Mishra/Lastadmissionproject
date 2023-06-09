@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Lastadmissionproject.Models;
 
@@ -12,20 +13,51 @@ namespace Lastadmissionproject.Controllers
 {
     public class ApplicantDetailsController : Controller
     {
-        private AdmissionDbContext db = new AdmissionDbContext();
+         AdmissionDbContext db = new AdmissionDbContext();
 
         // GET: ApplicantDetails
         public ActionResult Index()
         {
-           return View(db.ApplicantDetails.ToList());
+        //    List<ApplicantDetail> meritList = GenerateMeritList();
+
+
+        //    return View(meritList);
+        //}
+        //private List<ApplicantDetail> GenerateMeritList()
+        //{
+        //    List<ApplicantDetail> meritList = db.ApplicantDetails
+        //    .OrderByDescending(a => a.HigherSecondaryAggregateMarks)
+        //    .ToList();
+
+        //    for (int i = 0; i < meritList.Count; i++)
+        //    {
+        //        meritList[i].Rank = i + 1;
+        //    }
+
+        //    return meritList;
+
+            return View(db.ApplicantDetails.ToList());
         }
-        
+
+
+
         public ActionResult MeritList()
         {
-            
-
-            return View(db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
-
+            //int rank = 1;
+            //for (var item in db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks))
+            //    {
+            //      db.ApplicantDetails.Rank = rank;
+            //      rank++;
+            //    }
+           List<ApplicantDetail> applicants= db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
+            for (int i = 0; i< applicants.Count(); i++)
+            {
+                applicants[i].Rank = i + 1;
+            }
+           
+            db.SaveChanges();
+                //return View(db.ApplicantDetails.Include(a => a.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
+            return View(applicants);
             
 
         }
