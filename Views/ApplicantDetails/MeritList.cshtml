@@ -6,6 +6,7 @@
 }
 
 <h2>MeritList</h2>
+<!--@Html.ActionLink("Continue", "MeritList1", "ApplicantDetails")-->
 
 @if (User.IsInRole("Admin"))
 {
@@ -16,7 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CandidateId)
         </th>
-        
+
 
 
         <th>
@@ -36,12 +37,7 @@
             @Html.DisplayNameFor(model => model.Rank)
         </th>
 
-        <th>
-
-        @Html.DisplayNameFor(model => model.AllotmentStatus)
-    </th>
-
-
+       
 
 
 
@@ -50,6 +46,8 @@
 
     @foreach (var item in Model)
     {
+        if (item.CandidateId != 14)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CandidateId)
@@ -70,15 +68,13 @@
 
                 @Html.DisplayFor(modelItem => item.Rank)
             </td>
-            <td>
-
-                @Html.DisplayFor(modelItem => item.AllotmentStatus)
-            </td>
+            
 
 
 
 
         </tr>
+        }
     }
 
 </table>

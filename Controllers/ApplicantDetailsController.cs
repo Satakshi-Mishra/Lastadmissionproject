@@ -56,9 +56,32 @@ namespace Lastadmissionproject.Controllers
             }
            
             db.SaveChanges();
-                //return View(db.ApplicantDetails.Include(a => a.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
+            //return View(db.ApplicantDetails.Include(a => a.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
             return View(applicants);
             
+            
+
+        }
+
+        public ActionResult MeritList1()
+        {
+            //int rank = 1;
+            //for (var item in db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks))
+            //    {
+            //      db.ApplicantDetails.Rank = rank;
+            //      rank++;
+            //    }
+            List<ApplicantDetail> applicants = db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
+            for (int i = 0; i < applicants.Count(); i++)
+            {
+                applicants[i].Rank = i + 1;
+            }
+
+            db.SaveChanges();
+            //return View(db.ApplicantDetails.Include(a => a.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
+            return View(applicants);
+
+
 
         }
         // GET: ApplicantDetails/Details/5

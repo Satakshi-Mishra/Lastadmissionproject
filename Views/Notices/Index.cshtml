@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Lastadmissionproject.Models.Notices>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Notice Board</h1><br>
+<br>
+
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New Notice", "Create")
+    </p>
+}
+
+
+@foreach (var item in Model)
+{
+    <section>
+        <h4>@item.NoticeName</h4>
+        <p>@item.NoticeDescription</p>
+        <p><em>@item.NoticeCreated</em></p>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
+            </td>
+        }
+    </section>
+
+
+
+}
+
+<!--<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NoticeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoticeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoticeCreated)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoticeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoticeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoticeCreated)
+        </td>
+<td>
+    @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId }) |
+    @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
+</td>
+</tr>
+}
+
+</table>-->

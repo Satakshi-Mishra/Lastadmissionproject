@@ -19,6 +19,7 @@ namespace Lastadmissionproject.Models
         public virtual DbSet<Allotment> Allotments { get; set; }
         public virtual DbSet<AdmissionFee> Fees { get; set; }
         public virtual DbSet<Login> UserLogin { get; set; }
-        
+
+        public System.Data.Entity.DbSet<Lastadmissionproject.Models.Notices> Notices { get; set; }
     }
 }

@@ -1,0 +1,43 @@
+﻿@model Lastadmissionproject.Models.Notices
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notices</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoticeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoticeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoticeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoticeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoticeCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoticeCreated)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NoticeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

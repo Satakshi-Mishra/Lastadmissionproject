@@ -32,6 +32,8 @@
                     @if (User.IsInRole("Applicant"))
                     {
                         <li>@Html.ActionLink("Meritlist", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Allotment List", "MeritList1", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+
                     }
 
 
@@ -39,6 +41,7 @@
                     {
                         <li>@Html.ActionLink("Manage Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Meritlist and Allot", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Allotment List", "MeritList1", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
 
                     }
 
@@ -70,9 +73,9 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - TECHNOVISTA INSTITUTE OF TECHNOLOGY</p>
-        </footer>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - TECHNOVISTA INSTITUTE OF TECHNOLOGY</p>
+    </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

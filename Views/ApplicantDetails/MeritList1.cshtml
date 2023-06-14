@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lastadmissionproject.Models.ApplicantDetail>
+
+@{
+    ViewBag.Title = "MeritList1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Allotment List</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateId)
+        </th>
+
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+
+       
+        <th>
+
+            @Html.DisplayNameFor(model => model.Courses.CourseName)
+        </th>
+        
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.AllotmentStatus)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model)
+{
+
+    if (item.CandidateId != 14)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+
+        
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Courses.CourseName)
+
+        </td>
+       
+        <td>
+
+            @Html.DisplayFor(modelItem => item.AllotmentStatus)
+        </td>
+    </tr>
+    }
+}
+
+</table>

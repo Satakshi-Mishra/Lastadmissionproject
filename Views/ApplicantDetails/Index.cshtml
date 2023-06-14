@@ -43,7 +43,11 @@
 
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+
+    if (item.CandidateId != 14)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
@@ -81,6 +85,7 @@
             @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
         </td>
     </tr>
+    }
 }
 
 </table>
