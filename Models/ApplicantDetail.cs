@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
+using System.Web.Mvc;
 
 namespace Lastadmissionproject.Models
 {
+    [Authorize]
     public class ApplicantDetail
     {
         [Key]  //primary key

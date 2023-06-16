@@ -5,70 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Notice Board</h1><br>
-<br>
+<!--<h1>Notice Board</h1><br>-->
 
+<style>
+    .notice {
+        
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: rgb(255,255,255,0.5);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        backdrop-filter: blur(5px);
+    }
 
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New Notice", "Create")
-    </p>
-}
+     body {
+        background-color: #f4f4f4;
+        background-image: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-139792.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+</style>
 
-
-@foreach (var item in Model)
-{
-    <section>
-        <h4>@item.NoticeName</h4>
-        <p>@item.NoticeDescription</p>
-        <p><em>@item.NoticeCreated</em></p>
+    
+        <h1>Notice Board</h1>
+        <br>
 
         @if (User.IsInRole("Admin"))
         {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
-            </td>
+            <p>
+                <!--@Html.ActionLink("Create New Notice", "Create")-->
+                <button class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Notices")'">Create New Notice</button>
+            </p>
+            <br>
         }
-    </section>
+        @foreach (var item in Model)
+        {
+
+            <div class="notice">
+                <!--<h4><span style="background-color: #772953; color: #FFFFFF;">@item.NoticeName</span></h4><br>-->
+                <h4><span style="color: #772953;">@item.NoticeName</span></h4><br>
+                <p>@item.NoticeDescription</p>
+                <p><em>@item.NoticeCreated</em></p>
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId })
+                        |
+                        @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
+                    </td>
+                    <br>
+                    <br>
+                }
 
 
 
-}
 
-<!--<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NoticeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoticeDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoticeCreated)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeCreated)
-        </td>
-<td>
-    @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId }) |
-    @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
-</td>
-</tr>
-}
+            </div>
 
-</table>-->
+
+
+
+
+        }
+
+

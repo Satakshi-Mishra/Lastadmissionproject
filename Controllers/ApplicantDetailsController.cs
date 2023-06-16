@@ -11,11 +11,13 @@ using Lastadmissionproject.Models;
 
 namespace Lastadmissionproject.Controllers
 {
+    
     public class ApplicantDetailsController : Controller
     {
          AdmissionDbContext db = new AdmissionDbContext();
 
         // GET: ApplicantDetails
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
         //    List<ApplicantDetail> meritList = GenerateMeritList();
@@ -40,7 +42,7 @@ namespace Lastadmissionproject.Controllers
         }
 
 
-
+        //[Authorize(Roles = "Admin, Applicant")]
         public ActionResult MeritList()
         {
             //int rank = 1;
@@ -62,7 +64,7 @@ namespace Lastadmissionproject.Controllers
             
 
         }
-
+        //[Authorize(Roles = "Admin, Applicant")]
         public ActionResult MeritList1()
         {
             //int rank = 1;
@@ -85,6 +87,7 @@ namespace Lastadmissionproject.Controllers
 
         }
         // GET: ApplicantDetails/Details/5
+        //[Authorize(Roles = "Applicant")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -99,6 +102,7 @@ namespace Lastadmissionproject.Controllers
             return View(applicantDetail);
         }
 
+        [AllowAnonymous]
         // GET: ApplicantDetails/Create
         public ActionResult Create()
         { 
@@ -115,6 +119,7 @@ namespace Lastadmissionproject.Controllers
         // POST: ApplicantDetails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ApplicantDetail applicantDetail)
@@ -132,6 +137,7 @@ namespace Lastadmissionproject.Controllers
         }
 
         // GET: ApplicantDetails/Edit/5
+        //[Authorize(Roles = "Applicant")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -149,6 +155,7 @@ namespace Lastadmissionproject.Controllers
         // POST: ApplicantDetails/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Applicant")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks,CourseId")] ApplicantDetail applicantDetail)
@@ -163,6 +170,7 @@ namespace Lastadmissionproject.Controllers
         }
 
         // GET: ApplicantDetails/Delete/5
+        //[Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -178,6 +186,7 @@ namespace Lastadmissionproject.Controllers
         }
 
         // POST: ApplicantDetails/Delete/5
+        //[Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
