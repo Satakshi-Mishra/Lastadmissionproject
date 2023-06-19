@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -20,23 +21,7 @@ namespace Lastadmissionproject.Controllers
         //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-        //    List<ApplicantDetail> meritList = GenerateMeritList();
-
-
-        //    return View(meritList);
-        //}
-        //private List<ApplicantDetail> GenerateMeritList()
-        //{
-        //    List<ApplicantDetail> meritList = db.ApplicantDetails
-        //    .OrderByDescending(a => a.HigherSecondaryAggregateMarks)
-        //    .ToList();
-
-        //    for (int i = 0; i < meritList.Count; i++)
-        //    {
-        //        meritList[i].Rank = i + 1;
-        //    }
-
-        //    return meritList;
+        
 
             return View(db.ApplicantDetails.ToList());
         }
@@ -45,12 +30,7 @@ namespace Lastadmissionproject.Controllers
         //[Authorize(Roles = "Admin, Applicant")]
         public ActionResult MeritList()
         {
-            //int rank = 1;
-            //for (var item in db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks))
-            //    {
-            //      db.ApplicantDetails.Rank = rank;
-            //      rank++;
-            //    }
+            
            List<ApplicantDetail> applicants= db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
             for (int i = 0; i< applicants.Count(); i++)
             {
@@ -67,12 +47,7 @@ namespace Lastadmissionproject.Controllers
         //[Authorize(Roles = "Admin, Applicant")]
         public ActionResult MeritList1()
         {
-            //int rank = 1;
-            //for (var item in db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks))
-            //    {
-            //      db.ApplicantDetails.Rank = rank;
-            //      rank++;
-            //    }
+            
             List<ApplicantDetail> applicants = db.ApplicantDetails.OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
             for (int i = 0; i < applicants.Count(); i++)
             {
@@ -80,7 +55,6 @@ namespace Lastadmissionproject.Controllers
             }
 
             db.SaveChanges();
-            //return View(db.ApplicantDetails.Include(a => a.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList());
             return View(applicants);
 
 
@@ -100,6 +74,19 @@ namespace Lastadmissionproject.Controllers
                 return HttpNotFound();
             }
             return View(applicantDetail);
+        }
+
+        public ActionResult PersonalDetails()
+        {
+            string email = (string)Session["email"];
+            ApplicantDetail applicant = db.ApplicantDetails.SingleOrDefault(a => a.Email == email);
+            
+
+           if (applicant == null)
+           {
+             return HttpNotFound();
+            }
+           return View(applicant);
         }
 
         [AllowAnonymous]
@@ -127,39 +114,70 @@ namespace Lastadmissionproject.Controllers
             applicantDetail.Role = "Applicant";
 
             applicantDetail.AllotmentStatus = "Pending";
-            
+            if (ModelState.IsValid)
+            {
                 db.ApplicantDetails.Add(applicantDetail);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            
+               var a= db.SaveChanges();
+                if (a > 0)
+                {
+                    TempData["alert"] = "<script>alert('Registration Successfull')</script>";
+                    return RedirectToAction("SignIn", "Login");
+                }
+                else
+                {
+                    ViewBag.alert = "<script>alert('Registration not Successfull')</script>";
+                    return View();
+                }
+            }
+            //return RedirectToAction("Index");
 
-            //return View(applicantDetail);
+
+            return View(applicantDetail);
         }
 
         // GET: ApplicantDetails/Edit/5
-        //[Authorize(Roles = "Applicant")]
+        [Authorize(Roles = "Applicant")]
+
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ApplicantDetail applicantDetail = db.ApplicantDetails.Find(id);
-            if (applicantDetail == null)
-            {
-                return HttpNotFound();
-            }
+
+            var courses = db.Courses.ToList();
+
+            //Set the courses as SelectList in ViewBag 
+            ViewBag.Courses = courses;
+
             return View(applicantDetail);
         }
+        //[Authorize(Roles = "Applicant")]
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicantDetail applicantDetail = db.ApplicantDetails.Find(id);
+        //    if (applicantDetail == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(applicantDetail);
+        //}
+
+
+
+
 
         // POST: ApplicantDetails/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize(Roles = "Applicant")]
+        [Authorize(Roles = "Applicant")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CandidateId,FullName,FatherName,MotherName,Email,Password,Mobile,Age,HigherSecondaryAggregateMarks,CourseId")] ApplicantDetail applicantDetail)
+        public ActionResult Edit(ApplicantDetail applicantDetail)
+
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(applicantDetail).State = EntityState.Modified;

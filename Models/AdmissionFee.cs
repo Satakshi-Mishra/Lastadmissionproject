@@ -10,7 +10,7 @@ namespace Lastadmissionproject.Models
     public class AdmissionFee
     {
         [Key]  //primary key
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PaymentId { get; set; }
 
 
@@ -19,18 +19,27 @@ namespace Lastadmissionproject.Models
         public int AllocationId { get; set; }
         public virtual Allotment Allotment { get; set; }
 
-        
-
-
 
         [ForeignKey("ApplicantDetail")]
         public int CandidateId { get; set; }
         public virtual ApplicantDetail ApplicantDetail { get; set; }
 
+        public string FullName { get; set; }
+
+
         public int FeesAmount { get; set; }
 
+        public string FeesStatus { get; set; }
 
+        public string PaymentMode { get; set; }
 
-        public string Fees_Status { get; set; }
+        public string CardType { get; set; }
+
+        public long CardNumber { get; set; }
+
+        public int CVV { get; set; }
+
+        public DateTime PaymentDate { get; set; }
+
     }
 }

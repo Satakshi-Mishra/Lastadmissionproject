@@ -81,6 +81,7 @@ namespace Lastadmissionproject.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(c.Email, false);
                     Session["uname"] = customer.FullName;
+                    Session["email"] = customer.Email;
 
 
 

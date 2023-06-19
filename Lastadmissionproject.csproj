@@ -133,7 +133,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
-    <Compile Include="Controllers\MeritListsdemoController.cs" />
     <Compile Include="Controllers\NoticesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,6 +196,10 @@
     <Compile Include="Migrations\202306120426028_notice.cs" />
     <Compile Include="Migrations\202306120426028_notice.designer.cs">
       <DependentUpon>202306120426028_notice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306191320544_payment.cs" />
+    <Compile Include="Migrations\202306191320544_payment.designer.cs">
+      <DependentUpon>202306191320544_payment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
@@ -330,6 +333,8 @@
     <Content Include="Views\Notices\Index.cshtml" />
     <Content Include="Views\ApplicantDetails\MeritList1.cshtml" />
     <Content Include="Views\Allotments\Allot.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\ApplicantDetails\PersonalDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,6 +411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306120426028_notice.resx">
       <DependentUpon>202306120426028_notice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306191320544_payment.resx">
+      <DependentUpon>202306191320544_payment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,122 @@
+﻿@model Lastadmissionproject.Models.ApplicantDetail
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PersonalDetails</title>
+</head>
+<body>
+    <div>
+        <h4>ApplicantDetail</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Courses.CourseName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Courses.CourseName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FatherName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FatherName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MotherName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MotherName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Mobile)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HigherSecondaryAggregateMarks)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rank)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rank)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AllotmentStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AllotmentStatus)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

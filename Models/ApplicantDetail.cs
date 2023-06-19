@@ -28,9 +28,10 @@ namespace Lastadmissionproject.Models
         [Display(Name = "Mother's Name")]
         public string MotherName { get; set; }
 
-
+        
         [Required(ErrorMessage = "Email field is mandatory")]
         [EmailAddress(ErrorMessage = "Email field is invalid")]
+        //[Index("IX_Email", IsUnique = true)]// Apply unique index on the email field 
         //unique email only
         public string Email { get; set; }
         [Required(ErrorMessage = "Password is required")]
@@ -65,7 +66,7 @@ namespace Lastadmissionproject.Models
 
 
         [Display(Name = "Preffered Course")]
-        [Required]
+        //[Required]
         [ForeignKey("Courses")]  //many to one relation reference navigation
         public int CourseId { get; set; }
         public virtual Courses Courses { get; set; }
