@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdmissionFeeController.cs" />
     <Compile Include="Controllers\AllotmentsController.cs" />
     <Compile Include="Controllers\ApplicantDetailsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -200,6 +201,18 @@
     <Compile Include="Migrations\202306191320544_payment.cs" />
     <Compile Include="Migrations\202306191320544_payment.designer.cs">
       <DependentUpon>202306191320544_payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306201210280_june20.cs" />
+    <Compile Include="Migrations\202306201210280_june20.designer.cs">
+      <DependentUpon>202306201210280_june20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306211115004_june21.cs" />
+    <Compile Include="Migrations\202306211115004_june21.designer.cs">
+      <DependentUpon>202306211115004_june21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306211225238_payid.cs" />
+    <Compile Include="Migrations\202306211225238_payid.designer.cs">
+      <DependentUpon>202306211225238_payid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
@@ -325,7 +338,6 @@
     <Content Include="Views\Merit\Edit.cshtml" />
     <Content Include="Views\Merit\Index.cshtml" />
     <Content Include="Views\Allotments\Allotments.cshtml" />
-    <Content Include="Views\Courses\AllotmentDetails.cshtml" />
     <Content Include="Views\Notices\Create.cshtml" />
     <Content Include="Views\Notices\Delete.cshtml" />
     <Content Include="Views\Notices\Details.cshtml" />
@@ -335,6 +347,11 @@
     <Content Include="Views\Allotments\Allot.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\ApplicantDetails\PersonalDetails.cshtml" />
+    <Content Include="Views\AdmissionFee\PayNow.cshtml" />
+    <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\AdmissionFee\ViewPayments.cshtml" />
+    <Content Include="Views\AdmissionFee\ViewPaymentById.cshtml" />
+    <Content Include="Views\AdmissionFee\PaymentNotEligible.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +431,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306191320544_payment.resx">
       <DependentUpon>202306191320544_payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306201210280_june20.resx">
+      <DependentUpon>202306201210280_june20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306211115004_june21.resx">
+      <DependentUpon>202306211115004_june21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306211225238_payid.resx">
+      <DependentUpon>202306211225238_payid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

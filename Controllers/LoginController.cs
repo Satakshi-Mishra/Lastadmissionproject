@@ -73,15 +73,17 @@ namespace Lastadmissionproject.Controllers
             ModelState.Remove("Role");
             if (ModelState.IsValid)
             {
-                var customer = db.ApplicantDetails.Where(m => m.Email == c.Email && m.Password == c.Password).FirstOrDefault();
+                var candidate = db.ApplicantDetails.Where(m => m.Email == c.Email && m.Password == c.Password).FirstOrDefault();
 
 
 
-                if (customer != null)
+                if (candidate != null)
                 {
                     FormsAuthentication.SetAuthCookie(c.Email, false);
-                    Session["uname"] = customer.FullName;
-                    Session["email"] = customer.Email;
+                    Session["uname"] = candidate.FullName;
+                    Session["email"] = candidate.Email;
+                    //Session["candidateid"] = candidate.CandidateId;
+
 
 
 

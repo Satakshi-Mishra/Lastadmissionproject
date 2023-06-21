@@ -1,0 +1,85 @@
+﻿@model Lastadmissionproject.Models.AdmissionFee
+
+@{
+    ViewBag.Title = "ViewPaymentById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewPaymentById</h2>
+
+<div>
+    <h4>AdmissionFee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AllocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllocationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeesAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeesAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeesStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeesStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentMode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+
+    </dl>
+</div>

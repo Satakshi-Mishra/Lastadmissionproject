@@ -42,7 +42,7 @@ namespace Lastadmissionproject.Controllers
                         allot.CourseId = item.CourseId;
                         courses.SeatAvailable -= 1;
                         db.Allotments.Add(allot);
-
+                        
                     }
                     else
                     {

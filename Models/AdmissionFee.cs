@@ -27,7 +27,7 @@ namespace Lastadmissionproject.Models
         public string FullName { get; set; }
 
 
-        public int FeesAmount { get; set; }
+        public decimal FeesAmount { get; set; }
 
         public string FeesStatus { get; set; }
 

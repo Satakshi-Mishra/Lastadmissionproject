@@ -18,7 +18,7 @@ namespace Lastadmissionproject.Controllers
          AdmissionDbContext db = new AdmissionDbContext();
 
         // GET: ApplicantDetails
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
         

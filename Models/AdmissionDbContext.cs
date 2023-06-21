@@ -21,5 +21,7 @@ namespace Lastadmissionproject.Models
         public virtual DbSet<Login> UserLogin { get; set; }
 
         public System.Data.Entity.DbSet<Lastadmissionproject.Models.Notices> Notices { get; set; }
+
+        public System.Data.Entity.DbSet<Lastadmissionproject.Models.AdmissionFee> AdmissionFees { get; set; }
     }
 }
