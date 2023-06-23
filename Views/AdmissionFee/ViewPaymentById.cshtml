@@ -1,4 +1,4 @@
-﻿@model Lastadmissionproject.Models.AdmissionFee
+﻿@model IEnumerable<Lastadmissionproject.Models.AdmissionFee>
 
 @{
     ViewBag.Title = "ViewPaymentById";
@@ -7,79 +7,76 @@
 
 <h2>ViewPaymentById</h2>
 
-<div>
-    <h4>AdmissionFee</h4>
-    <hr />
-    <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CandidateId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CandidateId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentId)
-        </dd>
-        <dt>
+<table class="table">
+    <tr>
+        <th>
             @Html.DisplayNameFor(model => model.AllocationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AllocationId)
-        </dd>
-        <dt>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FeesAmount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FeesAmount)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FeesStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FeesStatus)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PaymentMode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentMode)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CardType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CardType)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVV)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PaymentDate)
-        </dt>
+        </th>
+        <th></th>
+    </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.PaymentDate)
-        </dd>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllocationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeesAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeesStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentMode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CVV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDate)
+        </td>
+        
+    </tr>
+}
 
-    </dl>
-</div>
+</table>

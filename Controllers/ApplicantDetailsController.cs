@@ -26,6 +26,15 @@ namespace Lastadmissionproject.Controllers
             return View(db.ApplicantDetails.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string text)
+        {
+            var applicants = db.ApplicantDetails.Where(a => a.FullName.ToLower().StartsWith(text.ToLower())).ToList();
+
+            return View(applicants);
+        }
+
+
 
         //[Authorize(Roles = "Admin, Applicant")]
         public ActionResult MeritList()
@@ -191,11 +200,13 @@ namespace Lastadmissionproject.Controllers
         //[Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicantDetail applicantDetail = db.ApplicantDetails.Find(id);
+            
             if (applicantDetail == null)
             {
                 return HttpNotFound();
@@ -209,8 +220,15 @@ namespace Lastadmissionproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            
             ApplicantDetail applicantDetail = db.ApplicantDetails.Find(id);
+            Courses courses;
+            courses = db.Courses.FirstOrDefault(c => c.CourseId == applicantDetail.CourseId);
             db.ApplicantDetails.Remove(applicantDetail);
+            if (applicantDetail.AllotmentStatus == "Alloted")
+            {
+                courses.SeatAvailable += 1;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

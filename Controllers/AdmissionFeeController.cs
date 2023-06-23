@@ -63,7 +63,7 @@ namespace Lastadmissionproject.Controllers
             var response = responseTask.Result;
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Payment Process Completed";
+                ViewBag.Message = "Payment Process Completed! You have completed your admission process!";
                 return View("Success");
             }
             model.FeesStatus = "Due";
@@ -105,7 +105,6 @@ namespace Lastadmissionproject.Controllers
             string email = (string)Session["email"];
             ApplicantDetail applicant = db.ApplicantDetails.SingleOrDefault(a => a.Email == email);
 
-
             Task<HttpResponseMessage> responseTask = client.GetAsync("AdmissionFee");
             responseTask.Wait();
             HttpResponseMessage response = responseTask.Result;
@@ -115,14 +114,15 @@ namespace Lastadmissionproject.Controllers
                 Task<string> dataContent = response.Content.ReadAsStringAsync();
                 dataContent.Wait();
                 string jsonData = dataContent.Result;
+                
                 List<AdmissionFee> payment = JsonConvert.DeserializeObject<List<AdmissionFee>>(jsonData);
-                AdmissionFee fee = payment.Where(p => p.CandidateId == applicant.CandidateId).FirstOrDefault();
-                if (fee == null)
+                 List<AdmissionFee> fees = payment.Where(p => p.CandidateId == applicant.CandidateId).ToList();
+                if (fees == null)
                 {
                     ViewBag.Message = "No transactions available";
                     return View("Error");
                 }
-                return View(fee);
+                return View(fees);
             }
             else
             {

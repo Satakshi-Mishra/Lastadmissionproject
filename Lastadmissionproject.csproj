@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202306211225238_payid.designer.cs">
       <DependentUpon>202306211225238_payid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306230836230_studenttable.cs" />
+    <Compile Include="Migrations\202306230836230_studenttable.designer.cs">
+      <DependentUpon>202306230836230_studenttable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
@@ -350,8 +354,8 @@
     <Content Include="Views\AdmissionFee\PayNow.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\AdmissionFee\ViewPayments.cshtml" />
-    <Content Include="Views\AdmissionFee\ViewPaymentById.cshtml" />
     <Content Include="Views\AdmissionFee\PaymentNotEligible.cshtml" />
+    <Content Include="Views\AdmissionFee\ViewPaymentById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -440,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306211225238_payid.resx">
       <DependentUpon>202306211225238_payid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306230836230_studenttable.resx">
+      <DependentUpon>202306230836230_studenttable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

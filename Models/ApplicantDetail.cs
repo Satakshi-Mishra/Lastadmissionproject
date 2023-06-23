@@ -54,7 +54,7 @@ namespace Lastadmissionproject.Models
 
         [Required(ErrorMessage = "Marks field is mandatory")]
         [Range(0, 100, ErrorMessage = "Invalid Marks ")]
-
+        [Display(Name = "Higher Secondary Aggregate Marks")]
         public int HigherSecondaryAggregateMarks { get; set; }
 
         //Authentication and authotrization will be done based on roles
@@ -65,12 +65,14 @@ namespace Lastadmissionproject.Models
 
 
 
-        [Display(Name = "Preffered Course")]
-        //[Required]
+        [Display(Name = "Course of Preference")]
+        
         [ForeignKey("Courses")]  //many to one relation reference navigation
         public int CourseId { get; set; }
         public virtual Courses Courses { get; set; }
 
+        //allotment status of student of their preferred course
+        [Display(Name = "Course Allotment Status")]
         public string AllotmentStatus { get; set; }
     }
 }
