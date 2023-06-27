@@ -133,7 +133,6 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\NoticesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,14 +217,28 @@
     <Compile Include="Migrations\202306230836230_studenttable.designer.cs">
       <DependentUpon>202306230836230_studenttable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306260353483_noextratables.cs" />
+    <Compile Include="Migrations\202306260353483_noextratables.designer.cs">
+      <DependentUpon>202306260353483_noextratables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306261528042_home.cs" />
+    <Compile Include="Migrations\202306261528042_home.designer.cs">
+      <DependentUpon>202306261528042_home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306270541214_coursena.cs" />
+    <Compile Include="Migrations\202306270541214_coursena.designer.cs">
+      <DependentUpon>202306270541214_coursena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306270611428_coursefee.cs" />
+    <Compile Include="Migrations\202306270611428_coursefee.designer.cs">
+      <DependentUpon>202306270611428_coursefee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
     <Compile Include="Models\Allotment.cs" />
     <Compile Include="Models\ApplicantDetail.cs" />
     <Compile Include="Models\Courses.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\MeritList.cs" />
     <Compile Include="Models\Notices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebProvider.cs" />
@@ -254,12 +267,19 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\collegeimg.png" />
     <Content Include="Content\collegeimg1.jpg" />
+    <Content Include="Content\images\8231999.jpg" />
     <Content Include="Content\images\collegeimg1.jpg" />
     <Content Include="Content\images\group-diverse-grads-throwing-caps-up-sky.jpg" />
+    <Content Include="Content\images\medium-shot-graduate-student.jpg" />
+    <Content Include="Content\images\OANWZJ0.jpg" />
     <Content Include="Content\images\output-onlinepngtools.png" />
+    <Content Include="Content\images\pay1.jpg" />
+    <Content Include="Content\images\piggy-bank-with-black-graduation-hat-coin-arrow-growing-interest-saving-money-education-web-banner-background-3d-illustration.jpg" />
     <Content Include="Content\images\teenagers-reading-books-around-table.jpg" />
     <Content Include="Content\images\uni.jpg" />
+    <Content Include="Content\images\wide-angle-shot-schonbrunn-palace-vienna-austria-with-cloudy-blue-sky.jpg" />
     <Content Include="Content\images\young-asian-student-university-campus-with-laptop.jpg" />
+    <Content Include="Content\images\young-female-university-graduate-academic-cap-sitting-table-smiling-pointing-left-future-lawyer-engineer-showing-idea.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -304,43 +324,14 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Logins\Create.cshtml" />
-    <Content Include="Views\Logins\Delete.cshtml" />
-    <Content Include="Views\Logins\Details.cshtml" />
-    <Content Include="Views\Logins\Edit.cshtml" />
-    <Content Include="Views\Logins\Index.cshtml" />
-    <Content Include="Views\MeritLists\Create.cshtml" />
-    <Content Include="Views\MeritLists\Delete.cshtml" />
-    <Content Include="Views\MeritLists\Details.cshtml" />
-    <Content Include="Views\MeritLists\Edit.cshtml" />
-    <Content Include="Views\MeritLists\Index.cshtml" />
     <Content Include="Views\ApplicantDetails\MeritList.cshtml" />
-    <Content Include="Views\Allotments\Create.cshtml" />
-    <Content Include="Views\Allotments\Delete.cshtml" />
-    <Content Include="Views\Allotments\Details.cshtml" />
-    <Content Include="Views\Allotments\Edit.cshtml" />
-    <Content Include="Views\Allotments\Index.cshtml" />
-    <Content Include="Views\Logins\signin.cshtml" />
-    <Content Include="Views\Logins1\Create.cshtml" />
-    <Content Include="Views\Logins1\Delete.cshtml" />
-    <Content Include="Views\Logins1\Details.cshtml" />
-    <Content Include="Views\Logins1\Edit.cshtml" />
-    <Content Include="Views\Logins1\Index.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\Delete.cshtml" />
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Logins1\SignIn.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
-    <Content Include="Views\Logins\abc.cshtml" />
     <Content Include="Views\Home\Notices.cshtml" />
-    <Content Include="Views\MeritLists\GenerateRankList.cshtml" />
-    <Content Include="Views\Merit\Create.cshtml" />
-    <Content Include="Views\Merit\Delete.cshtml" />
-    <Content Include="Views\Merit\Details.cshtml" />
-    <Content Include="Views\Merit\Edit.cshtml" />
-    <Content Include="Views\Merit\Index.cshtml" />
     <Content Include="Views\Allotments\Allotments.cshtml" />
     <Content Include="Views\Notices\Create.cshtml" />
     <Content Include="Views\Notices\Delete.cshtml" />
@@ -349,7 +340,6 @@
     <Content Include="Views\Notices\Index.cshtml" />
     <Content Include="Views\ApplicantDetails\MeritList1.cshtml" />
     <Content Include="Views\Allotments\Allot.cshtml" />
-    <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\ApplicantDetails\PersonalDetails.cshtml" />
     <Content Include="Views\AdmissionFee\PayNow.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
@@ -447,6 +437,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306230836230_studenttable.resx">
       <DependentUpon>202306230836230_studenttable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306260353483_noextratables.resx">
+      <DependentUpon>202306260353483_noextratables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306261528042_home.resx">
+      <DependentUpon>202306261528042_home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306270541214_coursena.resx">
+      <DependentUpon>202306270541214_coursena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306270611428_coursefee.resx">
+      <DependentUpon>202306270611428_coursefee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

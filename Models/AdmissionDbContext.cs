@@ -15,10 +15,10 @@ namespace Lastadmissionproject.Models
         }
         public DbSet<ApplicantDetail> ApplicantDetails { get; set; }
         public virtual DbSet<Courses> Courses { get; set; }
-        public virtual DbSet<MeritList> MeritLists { get; set; }
+        
         public virtual DbSet<Allotment> Allotments { get; set; }
         //public virtual DbSet<AdmissionFee> Fees { get; set; }
-        public virtual DbSet<Login> UserLogin { get; set; }
+        
 
         public System.Data.Entity.DbSet<Lastadmissionproject.Models.Notices> Notices { get; set; }
 

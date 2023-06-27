@@ -3,71 +3,137 @@
 @{
     ViewBag.Title = "Index";
 }
+<head>
 
-<h2>Courses We Offer</h2>
-<style>
-    .table {
-        margin-bottom: 20px;
-        padding: 20px;
-        background-color: rgb(255,255,255,0.5);
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        backdrop-filter: blur(5px);
-    }
-    body {
-        background-color: #f4f4f4;
-        background-image: url('https://img.freepik.com/premium-vector/abstract-technology-background_41981-652.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=sph');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-</style>
+    <style>
+        .table {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgb(255,255,255,0.6);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        body {
+            background-color: #f4f4f4;
+            /*            background-image: url('https://img.freepik.com/free-vector/flat-design-abstract-background_23-2149951019.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+*/ background-image: url('/Content/images/8231999.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+            .table th
+
+        {
+            background-color: #c5c5c5;
+            color: white;
+        }
+
+        .table tr:hover {
+            background-color: #c5c5c5;
+        }
+        
+
+
+
+     
+    </style>
+</head>
+
+
+
+<div>
+    <h2 style="display: inline-block; text-align: center; background-color:aliceblue;">COURSES WE OFFER</h2>
+    <section class="search-bar" style="display: inline-block; float: right;">
+        @using (Html.BeginForm("Index", "Courses", FormMethod.Post))
+        {
+            <input type="text" placeholder="search here" name="text" />
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+        }
+
+
+        <div>
+            <div class="input-container">
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
 @if (User.IsInRole("Admin"))
 {
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeatAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CutOff)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+
+
+
+
+
+
+@if (Model.Count() > 0)
+{
+
+
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeatAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CutOff)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-                </td>
-            }
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatAvailable)
+            </th>
+            <th style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CutOff)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CutOff)
+                </td>
+                <td>
+                    <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Details", "Courses", new { id = item.CourseId })'">Details</button>
+
+                </td>
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+}
+
+else
+{
+    <h4 style = "text-align: center;"> NO COURSES FOUND!</h4>
+}
+

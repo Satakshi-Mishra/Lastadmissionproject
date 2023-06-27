@@ -5,7 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ViewPaymentById</h2>
+
+
+<head>
+
+    <style>
+        .table {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgb(255,255,255,0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(3px);
+        }
+
+            .table th {
+                background-color: #808080;
+                color: white;
+            }
+
+
+            .table tr:hover {
+                background-color: rgb(255,255,255,0.3);
+            }
+
+        body {
+            background-color: #f4f4f4;
+            background-image: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+            /*background-image: url('/Content/images/8231999.jpg');*/
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+<h2 style="text-align: center;">YOUR TRANSACTIONS</h2>
+
+<br>
+<br>
 
 
 <table class="table">
@@ -16,6 +61,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CandidateId)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
@@ -32,51 +78,48 @@
             @Html.DisplayNameFor(model => model.CardType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CardNumber)
+            @Html.DisplayNameFor(model => model.CourseName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CVV)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.PaymentDate)
         </th>
-        <th></th>
+
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllocationId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CandidateId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeesAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeesStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentMode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CardType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CardNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CVV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentDate)
-        </td>
-        
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CandidateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeesAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeesStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>
+
+        </tr>
+    }
 
 </table>

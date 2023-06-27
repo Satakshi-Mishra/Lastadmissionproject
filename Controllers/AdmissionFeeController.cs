@@ -21,19 +21,26 @@ namespace Lastadmissionproject.Controllers
         {
             string email = (string)Session["email"];
             ApplicantDetail applicant = db.ApplicantDetails.SingleOrDefault(a => a.Email == email);
+            Allotment allotedapplicants = db.Allotments.SingleOrDefault(a=> a.CandidateId == applicant.CandidateId);
             if (applicant != null && applicant.AllotmentStatus == "Alloted")
             {
                 AdmissionFee pay = new AdmissionFee();
                 pay.PaymentDate = DateTime.Now;
                 pay.PaymentId = (new Random()).Next(10000, 99999);
                 pay.FeesStatus = "Due";
-                pay.PaymentMode = "Card Payment";
+                pay.PaymentMode = "OnlinePayment";
+                
 
 
                 if (applicant != null)
                 {
                     pay.CandidateId = applicant.CandidateId;
                     pay.FullName = applicant.FullName;
+                    pay.AllocationId = allotedapplicants.AllocationId;
+                    pay.CourseName = applicant.Courses.CourseName;
+                    pay.FeesAmount = applicant.Courses.CourseFee;
+
+
 
                 }
                 return View(pay);
@@ -95,6 +102,41 @@ namespace Lastadmissionproject.Controllers
                 return View("Error");
             }
         }
+
+
+        [HttpPost]
+        public ActionResult SearchPayments(FormCollection frm)
+        {
+            HttpClient client = new HttpClient();
+            int CandidateId = Int32.Parse(frm["text"]);
+           
+
+            client.BaseAddress = new Uri("https://localhost:44383/api/");
+
+
+
+            Task<HttpResponseMessage> responseTask = client.GetAsync("AdmissionFee");
+            responseTask.Wait();
+            HttpResponseMessage response = responseTask.Result;
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.StatusCode = response.StatusCode;
+                Task<string> dataContent = response.Content.ReadAsStringAsync();
+                dataContent.Wait();
+                string jsonData = dataContent.Result;
+                List<AdmissionFee> payments = JsonConvert.DeserializeObject<List<AdmissionFee>>(jsonData);
+                payments = payments.Where(p => p.CandidateId == CandidateId).ToList();
+
+                ViewBag.Status = "Success";
+                return View("ViewPayments",payments);
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
 
 
 

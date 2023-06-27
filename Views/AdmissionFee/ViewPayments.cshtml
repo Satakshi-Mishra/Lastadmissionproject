@@ -4,68 +4,140 @@
     ViewBag.Title = "ViewPayments";
 }
 
-<h2>ViewPayments</h2>
+<head>
+
+    <style>
+        .table {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgb(255,255,255,0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(3px);
+        }
+
+            .table th {
+                background-color: #808080;
+                color: white;
+            }
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AllocationId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CandidateId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FeesAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FeesStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentMode)
-        </th>
+            .table tr:hover {
+                background-color: rgb(255,255,255,0.3);
+            }
 
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentDate)
-        </th>
-        <th></th>
-    </tr>
+        body {
+            background-color: #f4f4f4;
+            background-image: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+            /*background-image: url('/Content/images/8231999.jpg');*/
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllocationId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CandidateId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeesAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeesStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentMode)
-        </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentDate)
-        </td>
 
-    </tr>
+
+
+
+
+
+
+
+
+
+<div>
+    <h2 style="display: inline-block; text-align: center; background-color:aliceblue;">ALL TRANSACTIONS</h2>
+    <section class="search-bar" style="display: inline-block; float: right;">
+        <form action="https://localhost:44347/AdmissionFee/SearchPayments" method="post">
+            <input type="text" placeholder="search here" name="text" />
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+
+        </form>
+
+        <div>
+            <div class="input-container">
+            </div>
+        </div>
+    </section>
+</div>
+
+@if (Model.Count() > 0)
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AllocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeesAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeesStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllocationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FeesAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FeesStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+
+            </tr>
+        }
+
+    </table>
 }
 
-</table>
+else
+{
+    <h4 style="text-align: center;"> NO TRANSACTIONS FOR THIS CANDIDATE FOUND!</h4>
+}

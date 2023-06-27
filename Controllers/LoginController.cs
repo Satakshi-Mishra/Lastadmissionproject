@@ -87,22 +87,23 @@ namespace Lastadmissionproject.Controllers
 
 
 
-                    TempData["alert"] = "<script>alert('Login Successfull')</script>";
+                    //TempData["alert"] = "<script>alert('Login Successfull')</script>";
+                    //TempData["alert"] = "'Login Successfull";
+                    ViewBag.AlertMessage = "Login Successfull";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.alert = "<script>alert('Login not Successfull')</script>";
+                    ModelState.AddModelError("", "Invalid email or password. Please try again");
+                    //ViewBag.alert = "<script>alert('Login not Successfull')</script>";
+                    TempData["alert"] = "'Login Not Successfull";
                     return View();
                 }
-
-
 
             }
 
 
-
-            return View();
+            return View(c);
         }
         public ActionResult SignOut(ApplicantDetail c)
         {

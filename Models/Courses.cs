@@ -30,6 +30,8 @@ namespace Lastadmissionproject.Models
         
         public int CutOff { get; set; }
 
+        public decimal CourseFee { get; set; }
+
         //one to many relation between courses table and allotment as well as appicants table
         public ICollection<Allotment> Allotment { get; set; }
 

@@ -23,7 +23,19 @@ namespace Lastadmissionproject.Controllers
             return View(db.Courses.ToList());
         }
 
+        [AllowAnonymous]
+
+        [HttpPost]
+        public ActionResult Index(string text)
+        {
+            var courses = db.Courses.Where(a => a.CourseName.ToLower().StartsWith(text.ToLower())).ToList();
+
+
+            return View(courses);
+        }
+
         // GET: Courses/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,7 +61,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff")] Courses courses)
+        public ActionResult Create([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff,CourseFee")] Courses courses)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +93,7 @@ namespace Lastadmissionproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff")] Courses courses)
+        public ActionResult Edit([Bind(Include = "CourseId,CourseName,SeatAvailable,Description,CutOff,CourseFee")] Courses courses)
         {
             if (ModelState.IsValid)
             {

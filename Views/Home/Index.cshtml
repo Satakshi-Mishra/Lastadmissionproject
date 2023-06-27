@@ -3,57 +3,290 @@
 }
 
 
-    
-        <main>
-            <section class="row" aria-labelledby="TechnoVistaTitle">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
+    <style>
+        .carousel-item {
+            position: relative;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
 
-                <h1 id="title"><span style="background-color: thistle"> WELCOME TO TECHNOVISTA INSTITUTE OF TECHNOLOGY</span></h1><br>
-                <br>
-                <br>
-                @if (User.IsInRole("Admin"))
-                {
-                    <h2>DASHBOARD</h2>
-                    <h3>Welcome to your dashboard, Admin! </h3>
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.0); /* Adjust the transparency as needed */
+        }
+
+        .overlay-left {
+            position: absolute;
+            top: 0;
+            left: 0%;
+            width: 15%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and transparency */
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+            z-index: 999;
+        }
+
+        .carousel-item:hover .overlay-left {
+            transform: translateX(0%);
+        }
+
+
+        /*full screen.overlay-left {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);*/ /* Adjust the background color and transparency */
+        /*transition: transform 0.3s ease-in-out;
+
+            z-index: 999;
+        }
+
+        .carousel-item:hover .overlay-left {
+            transform: translateX(-100%);
+        }*/
+
+        /*.carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }*/
+
+
+        .carousel-content {
+            position: absolute;
+            bottom: 60px; /* Adjust the position to be at the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            padding: 5px;
+        }
+        .carousel-content h1{
+            font-size: 40px;
+            margin-bottom: 100px;
+            color: black;
+            
+
+        }
+
+            .carousel-content h5 {
+                font-size: 20px;
+                margin-bottom: 100px;
+                color: black;
+            }
+            
+        .carousel-content h2 {
+                font-size: 32px;
+            }
+
+            .carousel-content p {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .carousel-content a {
+                display: inline-block;
+                margin-right: 10px;
+                color: white;
+                text-decoration: none;
+            }
+
+                .carousel-content a:hover {
+                    text-decoration: underline;
                 }
-                @if (Session["uname"] != null)
-                {
-                    <h4>Hello @Session["uname"].ToString()</h4>
+
+
+        /*fullscreeen.overlay-left-content {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            text-align: left;
+            color: white;
+            padding: 20px;
+        }
+
+            .overlay-left-content a {
+                display: block;
+                margin-bottom: 10px;
+                color: white;
+                text-decoration: none;
+            }
+
+                .overlay-left-content a:hover {
+                    text-decoration: underline;
+                }*/
+
+        .overlay-left-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+            .overlay-left-content a {
+                display: block;
+                margin-bottom: 10px;
+                color: white;
+                text-decoration: none;
+            }
+
+                .overlay-left-content a:hover {
+                    text-decoration: underline;
                 }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="row" aria-labelledby="TechnoVistaTitle">
 
-                <p class="lead">
-                    TechnoVista Institute of Technology is a prestigious and cutting-edge educational institution that stands at the forefront of technological innovation. Located in a sprawling campus, it offers a diverse range of B.Tech programs in various fields of engineering, computer science, and technology.
+            
+            <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExample" data-slide-to="1"></li>
+                    <li data-target="#carouselExample" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="background-image: url('/Content/images/wide-angle-shot-schonbrunn-palace-vienna-austria-with-cloudy-blue-sky.jpg')">
+                        @*<div class="overlay"></div>*@
+                        <div class="overlay-left">
+                            <div class="overlay-left-content">
+                                <a href="/Home/Contact">Contact</a>
+                                <a href="/ApplicantDetail/Create">Register</a>
+                            </div>
+                        </div>
 
-                </p><br>
+                        <div class="carousel-content">
+                            <h1><span style="background-color: rgba(255,255,255,0.5)"><b>TECHNOVISTA INSTITUTE OF TECHNOLOGY</b></span></h1><br>
+                            @if (Session["uname"] != null)
+                            {
+                                <p><span style="background-color: #1e1d1dcd">Hello @Session["uname"].ToString()</span></p>
+                            }
+                            @if (User.IsInRole("Applicant"))
+                            {
+                                
+                                <p><span style="background-color: #1e1d1dcd">Thank you for registering! For further updates of process, check the notice board positively and keep checking your profile regularly!</span> </p>
+                            }
+                            <p>
+                                <span style="background-color: #1e1d1dcd"> TechnoVista Institute of Technology is a prestigious and cutting-edge educational institution that stands at the forefront of technological innovation. Located in a sprawling campus, it offers a diverse range of B.Tech programs in various fields of engineering, computer science, and technology.</span>
+                            </p>
+                            </p>
+                            @*<a href="page1.html">Page 1</a>
+        <a href="page2.html">Page 2</a>*@
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('/Content/images/medium-shot-graduate-student.jpg');">
+                        @*<div class="overlay"></div>*@
+                        <div class="carousel-content">
+                            <h2><span style="background-color: #1e1d1dcd">Certified Teachers</span></h2>
+                            <p><span style="background-color: #1e1d1dcd">At TechnoVista Institute of Technology, we pride ourselves on having a highly qualified and experienced faculty. They offer guidance and mentorship, helping students explore their interests, set goals, and make informed career choices and helps in bridging the gap between academia and the real world.</span></p><br>
+                            @*<a href="page3.html">Page 3</a>
+                            <a href="page4.html">Page 4</a>*@
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('/Content/images/group-diverse-grads-throwing-caps-up-sky.jpg');">
+                        @*<div class="overlay"></div>*@
+                        <div class="carousel-content">
+                            <h2><span style="background-color: #1e1d1dcd">Top-Notch Education</span></h2>
+                            <p> <span style="background-color: #1e1d1dcd">At our college,we offer courses that make students ready for industry level.</span> </p>
 
-                <img src="https://imageio.forbes.com/specials-images/imageserve/633498cf8fa96d2fe3592c39/University-of-Michigan-Law-School-Quadrangle--Ann-Arbor--MI/960x0.jpg?format=jpg&width=960">
-
-                <!--<p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>-->
-            </section>
-            <br>
-            <br>
-            <div class="row">
-                <section class="col-md-4" aria-labelledby="CertifiedTeachersTitle">
-                    <h2 id="CertifiedTeachersTitle"><span style="background-color: thistle">Certified Teachers</span></h2>
-                    <p>At TechnoVista Institute of Technology, we pride ourselves on having a highly qualified and experienced faculty. They offer guidance and mentorship, helping students explore their interests, set goals, and make informed career choices and helps in bridging the gap between academia and the real world.</p><br>
-                    <!--<p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>-->
-                    
-                </section>
-                <section class="col-md-4" aria-labelledby="Top-NotchEducationTitle">
-                    <h2 id="Top-NotchEducationTitle"><span style="background-color: thistle">Top-Notch Education</span></h2>
-                    <p> At our college,we offer courses that make students ready for industry level. </p>
-
-                    <p><a class="btn btn-outline-dark" href="https://localhost:44347/Courses">Learn more &raquo;</a></p>
-                </section>
-                <section class="col-md-4" aria-labelledby="ExtracurricularActivitiesTitle">
-                    <h2 id="ExtracurricularActivitiesTitle"><span style="background-color: thistle">Extracurricular Activities</span></h2>
-                    <p>
-                        We understand the importance of holistic development.
-                        That's why we offer a vibrant range of extracurricular 
-                        activities clubs. 
-                    </p>
-                    <!--<p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
-                </section>
+                            <p><a class="btn btn-outline-dark" href="https://localhost:44347/Courses">Learn more &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
             </div>
-        </main>
-    
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="script.js"></script>
+            <script>
+        $(document).ready(function () {
+            $('.carousel').carousel();
+        });
+
+        // Automatic carousel rotation every 4 seconds
+        setInterval(function () {
+            $('.carousel').carousel('next');
+        }, 7000);
+
+
+
+
+            </script>
+</body>
+</html>
+@*@if (User.IsInRole("Admin"))
+    {
+        <h2>DASHBOARD</h2>
+        <h3>Welcome to your dashboard, Admin! </h3>
+    }*@
+@*@if (Session["uname"] != null)
+{
+    <h4>Hello @Session["uname"].ToString()</h4>
+}*@
+
+
+@*<p class="lead">
+    TechnoVista Institute of Technology is a prestigious and cutting-edge educational institution that stands at the forefront of technological innovation. Located in a sprawling campus, it offers a diverse range of B.Tech programs in various fields of engineering, computer science, and technology.
+
+</p>
+<br>*@
+
+@*<img src="https://imageio.forbes.com/specials-images/imageserve/633498cf8fa96d2fe3592c39/University-of-Michigan-Law-School-Quadrangle--Ann-Arbor--MI/960x0.jpg?format=jpg&width=960">*@
+
+<!--<p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>-->
+        <!--</section>
+<br>
+<br>
+<div class="row">
+    <section class="col-md-4" aria-labelledby="CertifiedTeachersTitle">
+        <h2 id="CertifiedTeachersTitle"><span style="background-color: thistle">Certified Teachers</span></h2>
+        <p>At TechnoVista Institute of Technology, we pride ourselves on having a highly qualified and experienced faculty. They offer guidance and mentorship, helping students explore their interests, set goals, and make informed career choices and helps in bridging the gap between academia and the real world.</p><br>-->
+        <!--<p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>-->
+
+    <!--</section>-->
+    @*<section class="col-md-4" aria-labelledby="Top-NotchEducationTitle">
+        <h2 id="Top-NotchEducationTitle"><span style="background-color: thistle">Top-Notch Education</span></h2>
+        <p> At our college,we offer courses that make students ready for industry level. </p>
+
+        <p><a class="btn btn-outline-dark" href="https://localhost:44347/Courses">Learn more &raquo;</a></p>
+    </section>
+    <section class="col-md-4" aria-labelledby="ExtracurricularActivitiesTitle">
+        <h2 id="ExtracurricularActivitiesTitle"><span style="background-color: thistle">Extracurricular Activities</span></h2>
+        <p>
+            We understand the importance of holistic development.
+            That's why we offer a vibrant range of extracurricular 
+            activities clubs. 
+        </p>*@
+        <!--<p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+   @*</section>
+</div>
+    </main>*@
+</body>
 

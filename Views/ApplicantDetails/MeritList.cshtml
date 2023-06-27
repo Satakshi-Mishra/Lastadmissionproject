@@ -5,13 +5,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MeritList</h2>
-<!--@Html.ActionLink("Continue", "MeritList1", "ApplicantDetails")-->
 
+
+<head>
+    <style>
+        .table {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgb(255,255,255,0.5);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+
+            .table th {
+                background-color: #772953;
+                color: white;
+            }
+
+            .table tr:hover {
+                background-color: #fedec7;
+            }
+           
+
+        body {
+            background-color: #f4f4f4;
+            background-image: url('https://img.freepik.com/free-photo/orange-paint-brush-textured_53876-94978.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<h2 style="text-align:center">MeritList</h2>
+
+<!--@Html.ActionLink("Continue", "MeritList1", "ApplicantDetails")-->
 @if (User.IsInRole("Admin"))
 {
-    <button class="btn btn-primary" onclick="location.href='@Url.Action("Allot", "Allotments")'">Allot Seats</button>
+<button class="btn btn-primary" onclick="location.href='@Url.Action("Allot", "Allotments")'">Allot Seats</button>
 }
+<br>
+<br>
 <table class="table">
     <tr>
         <th>
@@ -37,7 +71,7 @@
             @Html.DisplayNameFor(model => model.Rank)
         </th>
 
-       
+
 
 
 
@@ -48,32 +82,32 @@
     {
         if (item.CandidateId != 14)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CandidateId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
-            </td>
-            <td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+                    @Html.DisplayFor(modelItem => item.Courses.CourseName)
 
-            </td>
-            <td>
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.Rank)
-            </td>
-            
-
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
 
 
 
-        </tr>
+
+
+            </tr>
         }
     }
 

@@ -4,95 +4,166 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<head>
+    <style>
+        .card {
+            cursor: pointer;
+            width: 1100px;
+            height: 450px;
+            background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%, rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 255, .2);
+            transition: all .2s;
+            box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+        }
 
-<div>
-    <h4>ApplicantDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+            .card:hover {
+                box-shadow: -12px 12px 2px -1px rgba(0, 0, 255, .2);
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FatherName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MotherName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MotherName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mobile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mobile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HigherSecondaryAggregateMarks)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Courses.CourseName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Courses.CourseName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Rank)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rank)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AllotmentStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AllotmentStatus)
-        </dd>
+        .h2 {
+            font-size: 32px;
+        }
+    </style>
+</head>
 
 
 
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateId }) |
-    @Html.ActionLink("Back to List", "Index")
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+    <div class="card" style="text-align:center; margin-bottom: 0px;">
+        <h2>Details of the Candidate</h2>
+        <hr />
+
+
+        <div>
+
+
+            <dl class="dl-horizontal">
+                <p style="margin-bottom: 0px;"><b>Candidate Id:</b>  @Html.DisplayFor(model => model.CandidateId) </p>
+                <p style="margin-bottom: 0px;"><b>Candidate Name:</b>  @Html.DisplayFor(model => model.FullName) </p>
+
+                <p style="margin-bottom: 0px;"><b>Email Id:</b>   @Html.DisplayFor(model => model.Email)</p>
+                <p style="margin-bottom: 0px;"><b>Mobile Number:</b>  @Html.DisplayFor(model => model.Mobile) </p>
+
+
+
+                <p style="margin-bottom: 0px;"><b>Candidate Age:</b>  @Html.DisplayFor(model => model.Age) </p>
+
+
+                
+                    <p style="margin-bottom: 0px;"><b>Candidate Rank:</b>  @Html.DisplayFor(model => model.Rank) </p>
+                    <p style="margin-bottom: 0px;"><b>
+    HS Aggregate Marks:
+</b>  @Html.DisplayFor(model => model.HigherSecondaryAggregateMarks)
 </p>
+               
+                            <p style="margin-bottom: 0px;"><b>Course of Preference:</b>  @Html.DisplayFor(model => model.Courses.CourseName) </p>
+                            <p style="margin-bottom: 0px;"><b>Course Allotment Status:</b>  @Html.DisplayFor(model => model.AllotmentStatus)</p>
+                            <p style="margin-bottom: 0px;"><b>Father's Name:</b>  @Html.DisplayFor(model => model.FatherName) </p>
+                            <p style="margin-bottom: 0px;"><b>Mother's Name:</b>  @Html.DisplayFor(model => model.MotherName) </p>
+
+
+
+
+
+
+                            @*<dt>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FullName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FatherName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FatherName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MotherName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MotherName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mobile)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Age)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HigherSecondaryAggregateMarks)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Courses.CourseName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Courses.CourseName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rank)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Rank)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AllotmentStatus)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AllotmentStatus)
+                </dd>
+
+
+
+
+            </dl>*@
+                        </div>
+
+</div>
+</body>

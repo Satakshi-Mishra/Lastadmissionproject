@@ -21,15 +21,17 @@ namespace Lastadmissionproject.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-        
+            
 
             return View(db.ApplicantDetails.ToList());
+
         }
 
         [HttpPost]
         public ActionResult Index(string text)
         {
-            var applicants = db.ApplicantDetails.Where(a => a.FullName.ToLower().StartsWith(text.ToLower())).ToList();
+            var applicants = db.ApplicantDetails.Where(a => a.FullName.ToLower().StartsWith(text.ToLower()) || a.AllotmentStatus.ToLower().StartsWith(text.ToLower())).ToList();
+
 
             return View(applicants);
         }
@@ -127,6 +129,7 @@ namespace Lastadmissionproject.Controllers
             {
                 db.ApplicantDetails.Add(applicantDetail);
                var a= db.SaveChanges();
+
                 if (a > 0)
                 {
                     TempData["alert"] = "<script>alert('Registration Successfull')</script>";
@@ -190,8 +193,10 @@ namespace Lastadmissionproject.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(applicantDetail).State = EntityState.Modified;
+                applicantDetail.Role = "Applicant";
+               applicantDetail.AllotmentStatus = "Pending";
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(applicantDetail);
         }
