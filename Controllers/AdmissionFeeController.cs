@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 
@@ -16,9 +17,17 @@ namespace Lastadmissionproject.Controllers
     public class AdmissionFeeController : Controller
     {
         AdmissionDbContext db = new AdmissionDbContext();
+        
         // GET: AdmissionFee
         public ActionResult PayNow()
         {
+            if (Session["email"] == null)
+            {
+                ViewBag.Message = "Dear Candidate, your Session has expired! Please log in again to make payment!";
+                return View("Error");
+            }
+
+
             string email = (string)Session["email"];
             ApplicantDetail applicant = db.ApplicantDetails.SingleOrDefault(a => a.Email == email);
             Allotment allotedapplicants = db.Allotments.SingleOrDefault(a=> a.CandidateId == applicant.CandidateId);
@@ -27,7 +36,7 @@ namespace Lastadmissionproject.Controllers
                 AdmissionFee pay = new AdmissionFee();
                 pay.PaymentDate = DateTime.Now;
                 pay.PaymentId = (new Random()).Next(10000, 99999);
-                pay.FeesStatus = "Due";
+                
                 pay.PaymentMode = "OnlinePayment";
                 
 
@@ -39,6 +48,7 @@ namespace Lastadmissionproject.Controllers
                     pay.AllocationId = allotedapplicants.AllocationId;
                     pay.CourseName = applicant.Courses.CourseName;
                     pay.FeesAmount = applicant.Courses.CourseFee;
+                    pay.FeesStatus = applicant.FeeStatus;
 
 
 
@@ -58,6 +68,14 @@ namespace Lastadmissionproject.Controllers
         [HttpPost]
         public ActionResult PayNow(AdmissionFee model)
         {
+
+            ApplicantDetail applicant = db.ApplicantDetails.Find(model.CandidateId);
+
+            
+
+            applicant.FeeStatus = "Paid";
+            db.SaveChanges();
+
             model.FeesStatus = "Paid";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44383/api/");
@@ -70,7 +88,8 @@ namespace Lastadmissionproject.Controllers
             var response = responseTask.Result;
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Payment Process Completed! You have completed your admission process!";
+                ViewBag.Message = "Payment Process Completed! You have completed your admission process! For details on the further processes kindly keep checking the Notice Board regularly! Thank you!";
+                
                 return View("Success");
             }
             model.FeesStatus = "Due";

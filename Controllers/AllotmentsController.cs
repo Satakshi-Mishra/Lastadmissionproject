@@ -21,7 +21,7 @@ namespace Lastadmissionproject.Controllers
             Courses courses;
             ApplicantDetail detail;
 
-            var r = db.ApplicantDetails.Where(a => a.AllotmentStatus=="Pending").Include(v => v.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
+            var r = db.ApplicantDetails.Where(a => a.AllotmentStatus=="Pending" || a.AllotmentStatus == "Not Alloted").Include(v => v.Courses).OrderByDescending(a => a.HigherSecondaryAggregateMarks).ToList();
 
 
             foreach (var item in r)
@@ -37,6 +37,7 @@ namespace Lastadmissionproject.Controllers
                     if (item.HigherSecondaryAggregateMarks >= item.Courses.CutOff)
                     {
                         detail.AllotmentStatus = "Alloted";
+                        detail.FeeStatus = "Due";
                         allot.CandidateId = item.CandidateId;
                         Console.WriteLine(allot);
                         allot.CourseId = item.CourseId;
@@ -47,6 +48,7 @@ namespace Lastadmissionproject.Controllers
                     else
                     {
                         detail.AllotmentStatus = "Not Alloted";
+                        detail.FeeStatus = "Not Applicable";
                     }
 
                    

@@ -28,6 +28,8 @@ namespace Lastadmissionproject.Models
 
         public string CourseName { get; set; }
 
+        
+        [DisplayFormat(DataFormatString = "₹{0}")]
         public decimal FeesAmount { get; set; }
 
         public string FeesStatus { get; set; }
@@ -36,7 +38,10 @@ namespace Lastadmissionproject.Models
 
         public string CardType { get; set; }
 
+        [RegularExpression(@"^\d{16}$", ErrorMessage = "Please enter a valid 16-digit Card Number.")]
         public long CardNumber { get; set; }
+
+        [RegularExpression(@"^\d{3}$", ErrorMessage = "Please enter a valid 3-digit CVV.")]
 
         public int CVV { get; set; }
 

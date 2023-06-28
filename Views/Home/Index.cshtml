@@ -77,7 +77,7 @@
         }
         .carousel-content h1{
             font-size: 40px;
-            margin-bottom: 100px;
+            margin-bottom:90px;
             color: black;
             
 
@@ -170,8 +170,27 @@
                         <div class="overlay-left">
                             <div class="overlay-left-content">
                                 <a href="/Home/Contact">Contact</a>
-                                <a href="/ApplicantDetail/Create">Register</a>
-                            </div>
+                                @if (Session["uname"] == null)
+                                {
+                                    <a href="/ApplicantDetail/Create">Register</a>
+                                }
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a href="/ApplicantDetails/MeritList">Allot Seats</a>
+                                        <a href="/Courses/Index">Manage Courses</a>
+                                        <a href="/Notices/Index">Manage Notices</a>
+                                        <a href="/ApplicantDetails/Index">Candidate's List</a>
+                                        <a href="/AdmissionFee/ViewPayments">All Transactions</a>
+
+
+                                    }
+
+                                    @if (User.IsInRole("Applicant"))
+                                    {
+                                        <a href="/ApplicantDetails/PersonalDetails">Check you Application Details</a>
+                                        <a href="/AdmissionFee/PayNow">Pay Now!</a>
+                                    }
+                                </div>
                         </div>
 
                         <div class="carousel-content">
@@ -183,7 +202,7 @@
                             @if (User.IsInRole("Applicant"))
                             {
                                 
-                                <p><span style="background-color: #1e1d1dcd">Thank you for registering! For further updates of process, check the notice board positively and keep checking your profile regularly!</span> </p>
+                                <p><span style="background-color: #1e1d1dcd">Thank you for registering! For further updates of process, check the notice board positively for schedules and keep checking your profile regularly!</span> </p>
                             }
                             <p>
                                 <span style="background-color: #1e1d1dcd"> TechnoVista Institute of Technology is a prestigious and cutting-edge educational institution that stands at the forefront of technological innovation. Located in a sprawling campus, it offers a diverse range of B.Tech programs in various fields of engineering, computer science, and technology.</span>
@@ -230,12 +249,17 @@
             $('.carousel').carousel();
         });
 
-        // Automatic carousel rotation every 4 seconds
+        // Automatic carousel rotation every 7 seconds
         setInterval(function () {
             $('.carousel').carousel('next');
         }, 7000);
 
-
+                //On mouse hover carousel should stop
+                $('.carousel-item').on('mouseenter', function () {
+                    $(this).carousel('pause');
+                }).on('mouseleave', function () {
+                    $(this).carousel('cycle');
+                });
 
 
             </script>

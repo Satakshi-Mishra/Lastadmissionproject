@@ -50,7 +50,7 @@
 
         .form-container {
             width: 440px;
-            height: 550px;
+            height: 600px;
             padding: 5px;
             background-color: rgb(255,255,255,0.6);
             border-radius: 5px;
@@ -147,7 +147,7 @@
                         <div class="col-md-10">
                             <div class="input-group">
                                 @Html.HiddenFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control" } })
-                                <span class="control-label col-md-10"> @Model.FeesAmount</span>
+                                <span class="control-label col-md-10">₹ @Model.FeesAmount</span>
                                 @Html.ValidationMessageFor(model => model.FeesAmount, "", new { @class = "text-danger" })
                             </div>
                         </div>

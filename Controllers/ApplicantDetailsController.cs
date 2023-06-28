@@ -30,7 +30,7 @@ namespace Lastadmissionproject.Controllers
         [HttpPost]
         public ActionResult Index(string text)
         {
-            var applicants = db.ApplicantDetails.Where(a => a.FullName.ToLower().StartsWith(text.ToLower()) || a.AllotmentStatus.ToLower().StartsWith(text.ToLower())).ToList();
+            var applicants = db.ApplicantDetails.Where(a => a.FullName.ToLower().StartsWith(text.ToLower()) || a.AllotmentStatus.ToLower().StartsWith(text.ToLower()) || a.FeeStatus.ToLower().StartsWith(text.ToLower()) || a.Courses.CourseName.ToLower().StartsWith(text.ToLower())).ToList();
 
 
             return View(applicants);
@@ -122,9 +122,22 @@ namespace Lastadmissionproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ApplicantDetail applicantDetail)
         {
+
+            var existingCandidate = db.ApplicantDetails.FirstOrDefault(c => c.Email == applicantDetail.Email);
+
+            if (existingCandidate != null)
+            {
+                ViewBag.ErrorMessage = "An account with the same Email address already exists.";
+                return View("Error");
+            }
+
+
             applicantDetail.Role = "Applicant";
 
             applicantDetail.AllotmentStatus = "Pending";
+
+            applicantDetail.FeeStatus = "Not Applicable";
+
             if (ModelState.IsValid)
             {
                 db.ApplicantDetails.Add(applicantDetail);
@@ -195,6 +208,8 @@ namespace Lastadmissionproject.Controllers
                 db.Entry(applicantDetail).State = EntityState.Modified;
                 applicantDetail.Role = "Applicant";
                applicantDetail.AllotmentStatus = "Pending";
+                applicantDetail.FeeStatus = "Not Applicable";
+
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

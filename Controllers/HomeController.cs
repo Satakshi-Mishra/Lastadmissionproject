@@ -32,6 +32,12 @@ namespace Lastadmissionproject.Controllers
 
             return View();
         }
+        public ActionResult Timeline()
+        {
+            ViewBag.Message = "Timeline";
+
+            return View();
+        }
 
     }
 }

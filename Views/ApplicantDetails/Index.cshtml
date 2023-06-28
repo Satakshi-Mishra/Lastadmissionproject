@@ -28,9 +28,48 @@
 
         body {
             background-color: #f4f4f4;
-            background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-abstract-watercolor-background_23-2149023492.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
+            background-image: url('https://img.freepik.com/free-photo/orange-paint-brush-textured_53876-94978.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+
+
+       
+
+            
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .card {
+            width: 250px;
+            height: 280px;
+            background-color: #fef0e6;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+
+        .contact,
+        .details {
+            margin-top: 0px;
+            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -66,85 +105,124 @@
 <br>
 <br>
 
+
 @if (Model.Count() > 0)
 {
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CandidateId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mobile)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.HigherSecondaryAggregateMarks)
+    <div class="card-container">
+        @foreach (var student in Model)
+        {
+            if (student.CandidateId != 14)
+            {
+            <div class="card">
+                <h3 class="name">@student.FullName</h3>
+                <p class="contact">CandidateId: @student.CandidateId</p>
+                <p class="contact">Contact: @student.Mobile</p>
+                <p class="details">Email: @student.Email</p>
+                <p class="contact">@student.Courses.CourseName</p>
+                <p class="contact">Allotment Status: @student.AllotmentStatus</p>
+                <p class="contact">Fee Status: @student.FeeStatus</p>
+                <p class="contact"><button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Details", "ApplicantDetails", new { id = student.CandidateId })'">Details</button>  <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Delete", "ApplicantDetails", new { id = student.CandidateId })'">Delete</button></p>
+                
+</div>
+            }
+        }
+    </div>
 
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Courses.CourseName)
-
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllotmentStatus)
-
-        </th>
-       
+}
 
 
-    </tr>
 
-    @foreach (var item in Model)
+
+
+
+
+
+    @*@if (Model.Count() > 0)
     {
 
-        if (item.CandidateId != 14)
-        {
+
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CandidateId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mobile)
-                </td>
-                
-                <td style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.HigherSecondaryAggregateMarks)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Courses.CourseName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AllotmentStatus)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.CandidateId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.CourseName)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AllotmentStatus)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FeeStatus)
+
+                </th>
 
 
 
-                <td>
-                   
-                    @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
-                </td>
             </tr>
-        }
-    }
 
-</table>
-}
-else
+            @foreach (var item in Model)
             {
-                <h4 style="text-align: center;">NO CANDIDATE FOUND!</h4>
+
+                if (item.CandidateId != 14)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CandidateId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Courses.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AllotmentStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FeeStatus)
+                        </td>
+
+
+
+                        <td>
+
+                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                        </td>
+                    </tr>
+                }
             }
+
+        </table>
+
+
+    }*@
+    else
+    {
+        <h4 style="text-align: center;">NO CANDIDATE FOUND!</h4>
+    }

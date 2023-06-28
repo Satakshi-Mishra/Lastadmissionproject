@@ -74,5 +74,8 @@ namespace Lastadmissionproject.Models
         //allotment status of student of their preferred course
         [Display(Name = "Course Allotment Status")]
         public string AllotmentStatus { get; set; }
+
+        public string FeeStatus { get; set; }
+
     }
 }

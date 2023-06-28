@@ -233,6 +233,14 @@
     <Compile Include="Migrations\202306270611428_coursefee.designer.cs">
       <DependentUpon>202306270611428_coursefee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306280519240_feestatus.cs" />
+    <Compile Include="Migrations\202306280519240_feestatus.designer.cs">
+      <DependentUpon>202306280519240_feestatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306281147128_feesannotation.cs" />
+    <Compile Include="Migrations\202306281147128_feesannotation.designer.cs">
+      <DependentUpon>202306281147128_feesannotation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
@@ -346,6 +354,7 @@
     <Content Include="Views\AdmissionFee\ViewPayments.cshtml" />
     <Content Include="Views\AdmissionFee\PaymentNotEligible.cshtml" />
     <Content Include="Views\AdmissionFee\ViewPaymentById.cshtml" />
+    <Content Include="Views\Home\Timeline.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -449,6 +458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306270611428_coursefee.resx">
       <DependentUpon>202306270611428_coursefee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306280519240_feestatus.resx">
+      <DependentUpon>202306280519240_feestatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306281147128_feesannotation.resx">
+      <DependentUpon>202306281147128_feesannotation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

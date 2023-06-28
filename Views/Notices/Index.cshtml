@@ -9,7 +9,6 @@
 
 <style>
     .notice {
-        
         margin-bottom: 20px;
         padding: 20px;
         background-color: rgb(255,255,255,0.5);
@@ -18,59 +17,60 @@
         backdrop-filter: blur(5px);
     }
 
-     body {
+    body {
         background-color: #f4f4f4;
         background-image: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-139792.jpg?size=626&ext=jpg&ga=GA1.1.951333187.1685453264&semt=ais');
         background-size: cover;
         background-repeat: no-repeat;
     }
-    
 </style>
 
-    
-        <h1>Notice Board</h1>
-        <br>
+
+<h1>Notice Board</h1>
+<br>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <!--@Html.ActionLink("Create New Notice", "Create")-->
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Notices")'">Create New Notice</button>
+    </p>
+    <br>
+
+}
+<p><button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Timeline", "Home")'">Check Admission Schedule here!</button></p>
+@foreach (var item in Model)
+{
+
+    <div class="notice">
+        <!--<h4><span style="background-color: #772953; color: #FFFFFF;">@item.NoticeName</span></h4><br>-->
+        <h4><span style="color: #772953;">@item.NoticeName</span></h4><br>
+        <p>@item.NoticeDescription</p>
+        <p><em>@item.NoticeCreated</em></p>
+
 
         @if (User.IsInRole("Admin"))
         {
-            <p>
-                <!--@Html.ActionLink("Create New Notice", "Create")-->
-                <button class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Notices")'">Create New Notice</button>
-            </p>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId })
+                |
+                @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
+            </td>
+            <br>
             <br>
         }
-        @foreach (var item in Model)
-        {
-
-            <div class="notice">
-                <!--<h4><span style="background-color: #772953; color: #FFFFFF;">@item.NoticeName</span></h4><br>-->
-                <h4><span style="color: #772953;">@item.NoticeName</span></h4><br>
-                <p>@item.NoticeDescription</p>
-                <p><em>@item.NoticeCreated</em></p>
-
-
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId })
-                        |
-                        @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
-                    </td>
-                    <br>
-                    <br>
-                }
 
 
 
 
 
-            </div>
+    </div>
 
 
 
 
 
-        }
+}
 
 
