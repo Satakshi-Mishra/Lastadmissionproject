@@ -4,90 +4,102 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        h2 {
-            text-align: center;
-        }
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            h2 {
+                text-align: center;
+            }
 
-        .container {
-            display: flex;
-            align-items:flex-start;
-            Justify-content: right;
-            
-        }
+            .container {
+                display: flex;
+                align-items:flex-start;
+                Justify-content: right;
 
-
+            }
 
 
 
-        body {
-            background-color: #f4f4f4;
-            background-image: url('/Content/images/pay1.jpg');
-            background-size: cover;
-            background-position-y: top;
-
-            background-repeat: no-repeat;
-        }
 
 
-        .form-horizontal .form-group {
-            margin-right: 0px; 
-             margin-left: 0px;
-        }
+            body {
+                background-color: #f4f4f4;
+                background-image: url('/Content/images/pay1.jpg');
+                background-size: cover;
+                background-position-y: top;
+
+                background-repeat: no-repeat;
+                
+            }
 
 
-        .form-horizontal .control-label {
-            padding-top: 7px;
-
-        }
-
-        .form-container {
-            width: 440px;
-            height: 600px;
-            padding: 5px;
-            background-color: rgb(255,255,255,0.6);
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .form-control {
-            width: 40%;
-
-        }
-
-        .container-sm {
-            display: inline-block;
-           
-            
-        }
-
-        .form-group {
-            
-        }
-
-        .outer-div{
-
-        }
-        .control-label .col-md-5 {
-
-            padding-top: 7px;
-            margin-bottom: 0;
-             text-align: revert;
-        
-        }
-
-    </style>
+            .form-horizontal .form-group {
+                margin-right: 0px;
+                 margin-left: 0px;
+            }
 
 
-</head>
+            .form-horizontal .control-label {
+                padding-top: 7px;
+
+            }
+
+            .form-container {
+                width: 440px;
+                height: 600px;
+                padding: 5px;
+                background-color: rgb(255,255,255,0.6);
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(5px);
+            }
+
+            .form-control {
+                width: 40%;
+
+            }
+
+            .container-sm {
+                display: inline-block;
+
+
+            }
+
+            .form-group {
+
+            }
+
+            .outer-div{
+
+            }
+            .control-label .col-md-5 {
+                padding-top: 7px;
+                margin-bottom: 0;
+                text-align: revert;
+            }
+
+            .btn-info 
+            {
+                margin-top: 8px;
+                margin-left: 75px;
+            }
+              
+
+
+
+
+        </style>
+
+
+    </head>
 <body>
     <div class="container">
         <div class="form-container">
@@ -96,178 +108,181 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-        <div class="outer-div">
-            <div class="form-horizontal">
+                <div class="outer-div">
+                    <div class="form-horizontal">
 
 
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-                <div class="container-sm" style="margin-bottom: 0px;">
 
-                    <div class="form-group" style="display: inline-block; float: left; margin-bottom: 0px;">
-                        @Html.LabelFor(model => model.PaymentId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+                        <div class="container-sm" style="margin-bottom: 0px;">
+
+                            <div class="form-group" style="display: inline-block; float: left; margin-bottom: 0px;">
+                                @Html.LabelFor(model => model.PaymentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        @Html.HiddenFor(model => model.PaymentId, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                        <span class="control-label col-md-10"> @Model.PaymentId</span>
+                                        @Html.ValidationMessageFor(model => model.PaymentId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="display: inline-block; float: right; margin-bottom: 0px;">
+                                @Html.LabelFor(model => model.AllocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    @Html.HiddenFor(model => model.AllocationId, new { htmlAttributes = new { @class = "form-control" } })
+                                    <span class="control-label col-md-10"> @Model.AllocationId</span>
+                                    @Html.ValidationMessageFor(model => model.AllocationId, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="container-sm" style="margin-bottom: 0px;">
+
+                            <div class="form-group" style="display: inline-block; float: left; margin-bottom: 0px;">
+
+                                @Html.LabelFor(model => model.FeesAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        @Html.HiddenFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                        <span class="control-label col-md-10">₹ @Model.FeesAmount</span>
+                                        @Html.ValidationMessageFor(model => model.FeesAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="display: inline-block; float: right; margin-bottom: 0px;">
+
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.PaymentMode, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    <span class="control-label col-md-3"> @Model.PaymentMode</span>
+                                    @Html.ValidationMessageFor(model => model.PaymentMode, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        @Html.LabelFor(model => model.CandidateId, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <div class="input-group">
-                                @Html.HiddenFor(model => model.PaymentId, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                <span class="control-label col-md-10"> @Model.PaymentId</span>
-                                @Html.ValidationMessageFor(model => model.PaymentId, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.CandidateId, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="control-label col-md-2">@Model.CandidateId</span>
+                            @Html.ValidationMessageFor(model => model.CandidateId, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+
+
+
+
+                        @Html.LabelFor(model => model.FeesStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.FeesStatus, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="control-label col-md-2">@Model.FeesStatus</span>
+                            @Html.ValidationMessageFor(model => model.FeesStatus, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="control-label col-md-5">@Model.FullName</span>
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="control-label col-md-7">@Model.CourseName</span>
+                                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        @Html.LabelFor(model => model.CardType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <span class="control-label col-md-2">
+                                @Html.DropDownListFor(model => model.CardType, new List<SelectListItem>() {
+            new SelectListItem() {Text= "DebitCard", Value="DebitCard"},
+            new SelectListItem() {Text= "CreditCard", Value="CreditCard"}
+            }, "Select", new { htmlAttributes = new { @class = "form-control" } })
+                            </span>
+                            @Html.ValidationMessageFor(model => model.CardType, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.CardNumber, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <span class="control-label col-md-2"><b>Card No.</b></span>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CVV, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10" style="width: 40%;">
+                                @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CVV, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        @Html.LabelFor(model => model.PaymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.HiddenFor(model => model.PaymentDate, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="control-label col-md-7"><b>@Model.PaymentDate</b></span>
+                            @Html.ValidationMessageFor(model => model.PaymentDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Make Payment" class="btn-info"/>
+                                       
+
+
+
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group" style="display: inline-block; float: right; margin-bottom: 0px;">
-                        @Html.LabelFor(model => model.AllocationId, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-
-                            @Html.HiddenFor(model => model.AllocationId, new { htmlAttributes = new { @class = "form-control" } })
-                            <span class="control-label col-md-10"> @Model.AllocationId</span>
-                            @Html.ValidationMessageFor(model => model.AllocationId, "", new { @class = "text-danger" })
-
-                        </div>
-                    </div>
                 </div>
-
-
-
-
-
-
-
-                <div class="container-sm" style="margin-bottom: 0px;">
-
-                    <div class="form-group" style="display: inline-block; float: left; margin-bottom: 0px;">
-
-                        @Html.LabelFor(model => model.FeesAmount, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                @Html.HiddenFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control" } })
-                                <span class="control-label col-md-10">₹ @Model.FeesAmount</span>
-                                @Html.ValidationMessageFor(model => model.FeesAmount, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="display: inline-block; float: right; margin-bottom: 0px;">
-
-                        <div class="col-md-10">
-                            @Html.HiddenFor(model => model.PaymentMode, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                            <span class="control-label col-md-3"> @Model.PaymentMode</span>
-                            @Html.ValidationMessageFor(model => model.PaymentMode, "", new { @class = "text-danger" })
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                @Html.LabelFor(model => model.CandidateId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.HiddenFor(model => model.CandidateId, new { htmlAttributes = new { @class = "form-control" } })
-                    <span class="control-label col-md-2">@Model.CandidateId</span>
-                    @Html.ValidationMessageFor(model => model.CandidateId, "", new { @class = "text-danger" })
-                </div>
-
-
-
-
-
-
-
-                @Html.LabelFor(model => model.FeesStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.HiddenFor(model => model.FeesStatus, new { htmlAttributes = new { @class = "form-control" } })
-                    <span class="control-label col-md-2">@Model.FeesStatus</span>
-                    @Html.ValidationMessageFor(model => model.FeesStatus, "", new { @class = "text-danger" })
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-                        <span class="control-label col-md-5">@Model.FullName</span>
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
-                        <span class="control-label col-md-7">@Model.CourseName</span>
-                        @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-                @Html.LabelFor(model => model.CardType, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <span class="control-label col-md-2">
-                        @Html.DropDownListFor(model => model.CardType, new List<SelectListItem>() {
-    new SelectListItem() {Text= "DebitCard", Value="DebitCard"},
-    new SelectListItem() {Text= "CreditCard", Value="CreditCard"}
-    }, "Select", new { htmlAttributes = new { @class = "form-control" } })
-                    </span>
-                    @Html.ValidationMessageFor(model => model.CardType, "", new { @class = "text-danger" })
-                </div>
-
-
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.CardNumber, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <span class="control-label col-md-2"><b>Card No.</b></span>
-
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CVV, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10" style="width: 40%;">
-                        @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CVV, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-
-                @Html.LabelFor(model => model.PaymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-
-                    @Html.HiddenFor(model => model.PaymentDate, new { htmlAttributes = new { @class = "form-control" } })
-                    <span class="control-label col-md-7"><b>@Model.PaymentDate</b></span>
-                    @Html.ValidationMessageFor(model => model.PaymentDate, "", new { @class = "text-danger" })
-                </div>
-
-
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Make Payment" class="btn btn-default" style="color: darkred;" />
-                    </div>
-                </div>
-            </div>
-            </div>
             }
-
 
 
 

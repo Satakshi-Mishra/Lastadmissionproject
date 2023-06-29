@@ -54,6 +54,8 @@ namespace Lastadmissionproject.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Notices notice = new Notices();
+                //notice.NoticeCreated = DateTime.Now;
                 db.Notices.Add(notices);
                 db.SaveChanges();
                 return RedirectToAction("Index");

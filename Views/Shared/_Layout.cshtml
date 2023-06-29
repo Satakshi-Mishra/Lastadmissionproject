@@ -24,15 +24,21 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     @*<li>@Html.ActionLink("About us", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
+                    @if (Session["uname"] == null)
+                    {
+                        <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Notices", "Index", "Notices", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
 
 
 
-                    <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Notices", "Index", "Notices", new { area = "" }, new { @class = "nav-link" })</li>
+
 
                     @if (User.IsInRole("Applicant"))
                     {
+                        <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Notices", "Index", "Notices", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Meritlist", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Allotment List", "MeritList1", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Your Application", "PersonalDetails", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
@@ -47,6 +53,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Manage Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink(" Manage Notices", "Index", "Notices", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Meritlist and Allot", "MeritList", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Allotment List", "MeritList1", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Candidates", "Index", "ApplicantDetails", new { area = "" }, new { @class = "nav-link" })</li>

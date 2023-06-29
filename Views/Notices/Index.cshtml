@@ -52,10 +52,8 @@
         @if (User.IsInRole("Admin"))
         {
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.NoticeId })
-                |
-                @Html.ActionLink("Details", "Details", new { id = item.NoticeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.NoticeId })
+                <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Edit", "Notices", new { id = item.NoticeId })'">Edit</button>
+                <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Delete", "Notices", new { id = item.NoticeId })'">Delete</button>
             </td>
             <br>
             <br>
