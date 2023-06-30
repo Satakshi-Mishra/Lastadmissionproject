@@ -171,8 +171,18 @@ namespace Lastadmissionproject.Controllers
 
             //Set the courses as SelectList in ViewBag 
             ViewBag.Courses = courses;
+            if (applicantDetail != null && applicantDetail.AllotmentStatus == "Pending")
+            {
 
-            return View(applicantDetail);
+
+                return View(applicantDetail);
+            }
+            else
+            {
+                ViewBag.Message = "Dear Candidate! You cannot edit your details anymore!";
+                return View("NotAllowed");
+            }
+           
         }
         //[Authorize(Roles = "Applicant")]
         //public ActionResult Edit(int? id)

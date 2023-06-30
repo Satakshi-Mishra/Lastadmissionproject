@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Lastadmissionproject.Migrations;
 using Lastadmissionproject.Models;
 
 namespace Lastadmissionproject.Controllers
@@ -42,7 +43,9 @@ namespace Lastadmissionproject.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            Notices notices = new Notices();
+            notices.NoticeCreated = DateTime.Now;
+            return View(notices);
         }
 
         // POST: Notices/Create
@@ -54,8 +57,9 @@ namespace Lastadmissionproject.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Notices notice = new Notices();
-                //notice.NoticeCreated = DateTime.Now;
+                
+                
+
                 db.Notices.Add(notices);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -42,6 +42,7 @@ namespace Lastadmissionproject.Models
         public long CardNumber { get; set; }
 
         [RegularExpression(@"^\d{3}$", ErrorMessage = "Please enter a valid 3-digit CVV.")]
+        [Range(100, 999, ErrorMessage = "CVV cannot be negative")]
 
         public int CVV { get; set; }
 

@@ -6,7 +6,60 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
-    <style>
+<style>
+        /*.dots-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #b3d4fc;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  margin-right: 0;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #6793fb;
+    box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
+}*/
         .carousel-item {
             position: relative;
             height: 100vh;
@@ -79,7 +132,7 @@
             font-size: 40px;
             margin-bottom:90px;
             color: black;
-            
+
 
         }
 
@@ -88,7 +141,7 @@
                 margin-bottom: 100px;
                 color: black;
             }
-            
+
         .carousel-content h2 {
                 font-size: 32px;
             }
@@ -151,13 +204,22 @@
                 .overlay-left-content a:hover {
                     text-decoration: underline;
                 }
-    </style>
+</style>
 </head>
 <body>
+
+    @*<section class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </section>*@
     <main>
+
         <section class="row" aria-labelledby="TechnoVistaTitle">
 
-            
+
             <div id="carouselExample" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
@@ -174,23 +236,23 @@
                                 {
                                     <a href="/ApplicantDetail/Create">Register</a>
                                 }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <a href="/ApplicantDetails/MeritList">Allot Seats</a>
-                                        <a href="/Courses/Index">Manage Courses</a>
-                                        <a href="/Notices/Index">Manage Notices</a>
-                                        <a href="/ApplicantDetails/Index">Candidate's List</a>
-                                        <a href="/AdmissionFee/ViewPayments">All Transactions</a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a href="/ApplicantDetails/MeritList">Allot Seats</a>
+                                    <a href="/Courses/Index">Manage Courses</a>
+                                    <a href="/Notices/Index">Manage Notices</a>
+                                    <a href="/ApplicantDetails/Index">Candidate's List</a>
+                                    <a href="/AdmissionFee/ViewPayments">All Transactions</a>
 
 
-                                    }
+                                }
 
-                                    @if (User.IsInRole("Applicant"))
-                                    {
-                                        <a href="/ApplicantDetails/PersonalDetails">Check you Application Details</a>
-                                        <a href="/AdmissionFee/PayNow">Pay Now!</a>
-                                    }
-                                </div>
+                                @if (User.IsInRole("Applicant"))
+                                {
+                                    <a href="/ApplicantDetails/PersonalDetails">Check you Application Details</a>
+                                    <a href="/AdmissionFee/PayNow">Pay Now!</a>
+                                }
+                            </div>
                         </div>
 
                         <div class="carousel-content">
@@ -201,7 +263,7 @@
                             }
                             @if (User.IsInRole("Applicant"))
                             {
-                                
+
                                 <p><span style="background-color: #1e1d1dcd">Thank you for registering! For further updates of process, check the notice board positively for schedules and keep checking your profile regularly!</span> </p>
                             }
                             <p>
@@ -209,7 +271,7 @@
                             </p>
                             </p>
                             @*<a href="page1.html">Page 1</a>
-        <a href="page2.html">Page 2</a>*@
+                                <a href="page2.html">Page 2</a>*@
                         </div>
                     </div>
                     <div class="carousel-item" style="background-image: url('/Content/images/medium-shot-graduate-student.jpg');">
@@ -218,7 +280,7 @@
                             <h2><span style="background-color: #1e1d1dcd">Certified Teachers</span></h2>
                             <p><span style="background-color: #1e1d1dcd">At TechnoVista Institute of Technology, we pride ourselves on having a highly qualified and experienced faculty. They offer guidance and mentorship, helping students explore their interests, set goals, and make informed career choices and helps in bridging the gap between academia and the real world.</span></p><br>
                             @*<a href="page3.html">Page 3</a>
-                            <a href="page4.html">Page 4</a>*@
+                                <a href="page4.html">Page 4</a>*@
                         </div>
                     </div>
                     <div class="carousel-item" style="background-image: url('/Content/images/group-diverse-grads-throwing-caps-up-sky.jpg');">
@@ -240,19 +302,19 @@
                     <span class="sr-only"></span>
                 </a>
             </div>
-
+            @*<div class="dots-container">Loader</div>*@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
             <script src="script.js"></script>
             <script>
-        $(document).ready(function () {
-            $('.carousel').carousel();
-        });
+                $(document).ready(function () {
+                    $('.carousel').carousel();
+                });
 
-        // Automatic carousel rotation every 7 seconds
-        setInterval(function () {
-            $('.carousel').carousel('next');
-        }, 7000);
+                // Automatic carousel rotation every 7 seconds
+                setInterval(function () {
+                    $('.carousel').carousel('next');
+                }, 7000);
 
                 //On mouse hover carousel should stop
                 $('.carousel-item').on('mouseenter', function () {
@@ -261,6 +323,12 @@
                     $(this).carousel('cycle');
                 });
 
+                //loader
+                //$(window).on('load', function () {
+                //    //when the page is loaded fade out
+                //    $('dots-container').fadeOut();
+
+                //}
 
             </script>
 </body>

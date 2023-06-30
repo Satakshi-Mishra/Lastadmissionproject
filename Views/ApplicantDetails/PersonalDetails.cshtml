@@ -28,7 +28,7 @@
         .flip-card {
             background-color: transparent;
             width: 1100px;
-            height: 500px;
+            height: 450px;
             perspective: 1000px;
             font-family: sans-serif;
         }
@@ -98,6 +98,8 @@
 </head>
 
 <body>
+    @*<button type="button" class="btn btn-outline-dark" onclick="window.print()">Print your Application</button>*@
+
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -123,7 +125,6 @@
 
 
 
-
             </div>
             <div class="flip-card-back">
                 <p class="title">YOUR APPLICATION DETAILS</p>
@@ -132,6 +133,7 @@
                 <p>Father's Name:  @Html.DisplayFor(model => model.FatherName) </p>
                 <p>Mother's Name:  @Html.DisplayFor(model => model.MotherName) </p>
                 <p>HS Aggregate Marks:  @Html.DisplayFor(model => model.HigherSecondaryAggregateMarks) </p>
+
 
 
                 <p><a class="btn btn-outline-dark" @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateId }) &raquo;</a></p>
@@ -162,16 +164,16 @@
 
 
 
-   
-            
-
-        
 
 
 
-            
 
-    
+
+
+
+
+
+
 
 
 </body>

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\202306281147128_feesannotation.designer.cs">
       <DependentUpon>202306281147128_feesannotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306301256135_cvv.cs" />
+    <Compile Include="Migrations\202306301256135_cvv.designer.cs">
+      <DependentUpon>202306301256135_cvv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdmissionDbContext.cs" />
     <Compile Include="Models\AdmissionFee.cs" />
@@ -279,6 +283,7 @@
     <Content Include="Content\images\collegeimg1.jpg" />
     <Content Include="Content\images\group-diverse-grads-throwing-caps-up-sky.jpg" />
     <Content Include="Content\images\medium-shot-graduate-student.jpg" />
+    <Content Include="Content\images\MicrosoftTeams-image__1_-removebg-preview.png" />
     <Content Include="Content\images\OANWZJ0.jpg" />
     <Content Include="Content\images\output-onlinepngtools.png" />
     <Content Include="Content\images\pay1.jpg" />
@@ -355,6 +360,7 @@
     <Content Include="Views\AdmissionFee\PaymentNotEligible.cshtml" />
     <Content Include="Views\AdmissionFee\ViewPaymentById.cshtml" />
     <Content Include="Views\Home\Timeline.cshtml" />
+    <Content Include="Views\ApplicantDetails\NotAllowed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -464,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306281147128_feesannotation.resx">
       <DependentUpon>202306281147128_feesannotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306301256135_cvv.resx">
+      <DependentUpon>202306301256135_cvv.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
